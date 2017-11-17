@@ -1,0 +1,42 @@
+{
+  "reports": [
+    {
+      "reportId": "5a0e18db49b02d64b0f676d0",
+      "reportName": "New Report",
+      "builtIn": 0,
+      "widgets": [
+        {
+          "type": "geomap",
+          "title": "Map",
+          "dataComponents": [
+            {
+              "dataComponentId": "kbtef",
+              "metric": "Network - Agent to Agent — Latency - Both Directions",
+              "measure": "Mean",
+              "groupBy": ["Agents"],
+              "apiLinks": [
+                {
+                  "rel": "data",
+                  "href":
+                    "https://api.thousandeyes.com/v6/reports/5a0e18db49b02d64b0f676d0/kbtef"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href":
+            "https://api.thousandeyes.com/v6/reports/5a0e18db49b02d64b0f676d0"
+        },
+        {
+          "rel": "snapshots",
+          "href":
+            "https://api.thousandeyes.com/v6/report-snapshots?reportId=5a0e18db49b02d64b0f676d0"
+        }
+      ]
+    }
+  ]
+}
