@@ -9,6 +9,7 @@ const cities = [
   { name: 'Beijing', coordinates: [116.4074, 39.9042], population: 21009000 },
   { name: 'New York', coordinates: [-74.0059, 40.7128], population: 20630000 },
   { name: 'Guangzhou', coordinates: [113.2644, 23.1291], population: 20597000 },
+  { name: 'Norman', coordinates: [-97.4394, 35.2225], population: 1 },
   {
     name: 'Sao Paulo',
     coordinates: [-46.6333, -23.5505],
