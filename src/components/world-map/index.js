@@ -1,4 +1,5 @@
 import { geoMercator, geoPath } from 'd3-geo';
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { feature } from 'topojson-client';
 
@@ -21,6 +22,27 @@ class WorldMap extends Component {
       worldData: feature(worldJson, worldJson.objects.countries).features
     });
   }
+
+  ppointToMarkerHtml = () => {
+    return (
+      <circle
+        cx={this.projection()([8, 58])[0]}
+        cy={this.projection()([8, 48])[1]}
+        r={3}
+        fill="#E91E63"
+        className="marker"
+      />
+    );
+  };
+
+  generateMarkers = () => {
+    const allMArkers = _.chain([{}, {}, {}])
+      .map(this.ppointToMarkerHtml)
+      .value();
+
+    return allMArkers;
+  };
+
   render() {
     const { width, height } = this.props;
 
@@ -33,20 +55,12 @@ class WorldMap extends Component {
               d={geoPath().projection(this.projection())(d)}
               className="country"
               fill={`rgba(38,50,56,${1 / this.state.worldData.length * i})`}
-              stroke="#FFFFFF"
+              stroke="#222"
               strokeWidth={0.5}
             />
           ))}
         </g>
-        <g className="markers">
-          <circle
-            cx={this.projection()([8, 48])[0]}
-            cy={this.projection()([8, 48])[1]}
-            r={10}
-            fill="#E91E63"
-            className="marker"
-          />
-        </g>
+        <g className="markers">{this.generateMarkers()}</g>
       </svg>
     );
   }

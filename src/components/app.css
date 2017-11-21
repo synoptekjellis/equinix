@@ -7,7 +7,7 @@
 }
 
 .world-map {
-  background-color: #222;
+  background-color: #fff;
   height: 600px;
   display: flex;
   flex-direction: row;
