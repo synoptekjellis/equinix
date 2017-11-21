@@ -1,8 +1,23 @@
+import './index.css';
+import './themes/semantic.paper.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './components/app';
+import registerServiceWorker from './registerServiceWorker';
+import store from './store';
+
+//import './themes/semantic.sandstone.css';
+
+const TARGET_ROOT = 'root';
+
+let application = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+ReactDOM.render(application, document.getElementById(TARGET_ROOT));
 registerServiceWorker();
