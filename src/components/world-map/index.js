@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { feature } from 'topojson-client';
 
+import cities from '../cities';
 import worldJson from './world-110m.json';
 
 class WorldMap extends Component {
@@ -23,20 +24,24 @@ class WorldMap extends Component {
     });
   }
 
-  pointToMarkerHtml = () => {
+  pointToMarkerHtml = (point, index) => {
     return (
       <circle
-        cx={this.projection()([8, 58])[0]}
-        cy={this.projection()([8, 48])[1]}
+        key={`marker-${index}`}
+        cx={this.projection()(point.coordinates)[0]}
+        cy={this.projection()(point.coordinates)[1]}
         r={3}
         fill="#E91E63"
         className="marker"
+        onMouseEnter={event => {
+          console.log('hi!');
+        }}
       />
     );
   };
 
   generateMarkers = () => {
-    const allMArkers = _.chain([{}, {}, {}])
+    const allMArkers = _.chain(cities)
       .map(this.pointToMarkerHtml)
       .value();
 
@@ -59,6 +64,7 @@ class WorldMap extends Component {
               key={`path-${i}`}
               d={geoPath().projection(this.projection())(d)}
               className="country"
+              //control country colors here
               fill={`rgba(38,50,56,${1 / this.state.worldData.length * i})`}
               stroke="#222"
               strokeWidth={0.5}
