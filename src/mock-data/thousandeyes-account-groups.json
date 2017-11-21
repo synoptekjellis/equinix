@@ -1,0 +1,10 @@
+{
+  "accountGroups": [
+    {
+      "accountGroupName": "Equinix SVC",
+      "aid": 45471,
+      "current": 1,
+      "default": 1
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "test": [
+    {
+      "createdDate": "2017-11-10 15:45:13",
+      "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "enabled": 1,
+      "savedEvent": 0,
+      "testId": 470511,
+      "testName": "CH3 via Equinix Connect",
+      "type": "agent-to-agent",
+      "interval": 300,
+      "port": 49153,
+      "protocol": "TCP",
+      "networkMeasurements": 1,
+      "mtuMeasurements": 1,
+      "bgpMeasurements": 1,
+      "throughputMeasurements": 0,
+      "dscpId": 0,
+      "alertsEnabled": 0,
+      "alertRules": [
+        {
+          "alertType": "BGP",
+          "expression": "Reachability < 100%",
+          "minimumSources": 2,
+          "roundsViolatingOutOf": 1,
+          "roundsViolatingRequired": 1,
+          "ruleId": 395277,
+          "ruleName": "Default BGP Alert Rule"
+        }
+      ],
+      "liveShare": 0,
+      "targetAgentId": 46499,
+      "throughputDuration": 10000,
+      "throughputRate": 64,
+      "mss": 200,
+      "direction": "BIDIRECTIONAL",
+      "agents": [
+        {
+          "agentId": 47477,
+          "agentName": "LA3 SVC",
+          "agentType": "Enterprise",
+          "countryId": "US",
+          "ipAddresses": ["64.191.194.13"],
+          "location": "Los Angeles Area",
+          "network": "Equinix, Inc. (AS 394749)",
+          "prefix": "64.191.194.0/24"
+        }
+      ],
+      "sharedWithAccounts": [],
+      "bgpMonitors": [
+        {
+          "monitorId": 1,
+          "network": "Level 3 Communications, Inc. (AS 3356)",
+          "ipAddress": "4.69.184.193",
+          "monitorName": "Seattle, WA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 3,
+          "network": "AT&T Services, Inc. (AS 7018)",
+          "ipAddress": "12.0.1.63",
+          "monitorName": "New York, NY-1",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 6,
+          "network": "Sprint (AS 1239)",
+          "ipAddress": "144.228.241.130",
+          "monitorName": "Stockton, CA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 7,
+          "network": "Telstra Pty Ltd (AS 1221)",
+          "ipAddress": "203.62.252.83",
+          "monitorName": "Sydney-1",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 14,
+          "network": "KPN (AS 286)",
+          "ipAddress": "134.222.87.1",
+          "monitorName": "Amsterdam-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 15,
+          "network": "TELUS Communications Inc. (AS 852)",
+          "ipAddress": "154.11.98.225",
+          "monitorName": "Calgary",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 17,
+          "network": "Level 3 Communications, Inc. (AS 3549)",
+          "ipAddress": "67.17.82.114",
+          "monitorName": "Palo Alto, CA-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 18,
+          "network": "IIJ Internet Initiative Japan Inc. (AS 2497)",
+          "ipAddress": "202.249.2.169",
+          "monitorName": "Tokyo-1",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 21,
+          "network":
+            "California State University, Office of the Chancellor (AS 2152)",
+          "ipAddress": "137.164.16.84",
+          "monitorName": "Los Angeles, CA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 28,
+          "network": "Bell Canada (AS 6539)",
+          "ipAddress": "216.18.31.102",
+          "monitorName": "Vancouver",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 31,
+          "network": "GTT (AS 3257)",
+          "ipAddress": "89.149.178.10",
+          "monitorName": "Frankfurt-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 51,
+          "network": "WIDE Project (AS 7500)",
+          "ipAddress": "202.249.2.86",
+          "monitorName": "Tokyo-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 57,
+          "network": "Obit Telecommunications, St.Petersburg, Russia (AS 8492)",
+          "ipAddress": "85.114.0.217",
+          "monitorName": "St. Petersburg-1",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 61,
+          "network": "Level 3 Communications, Inc. (AS 3356)",
+          "ipAddress": "2001:7f8:4::d1c:1",
+          "monitorName": "London-8",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 62,
+          "network": "AT&T Services, Inc. (AS 7018)",
+          "ipAddress": "2001:1890:111d:1::63",
+          "monitorName": "New York, NY-6",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 63,
+          "network": "Verizon Business/UUnet (AS 701)",
+          "ipAddress": "2600:803::15",
+          "monitorName": "Washington, DC-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 64,
+          "network": "IIJ Internet Initiative Japan Inc. (AS 2497)",
+          "ipAddress": "2001:240:100:ff::2497:2",
+          "monitorName": "Tokyo-3",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 66,
+          "network": "GTT (AS 3257)",
+          "ipAddress": "2001:668:0:4::2",
+          "monitorName": "Frankfurt-3",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 70,
+          "network": "Vocus Connect International Backbone (AS 4826)",
+          "ipAddress": "2001:de8:6::4826:1",
+          "monitorName": "Sydney-5",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 72,
+          "network": "NTT America, Inc. (AS 2914)",
+          "ipAddress": "2001:418:0:1000::f000",
+          "monitorName": "Ashburn, VA-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 73,
+          "network": "Qwest Communications Company, LLC (AS 209)",
+          "ipAddress": "2001:428::205:171:203:140",
+          "monitorName": "Burbank, CA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 74,
+          "network": "Level 3 Communications, Inc. (AS 3549)",
+          "ipAddress": "208.51.134.246",
+          "monitorName": "London-9",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 75,
+          "network": "IIJ Internet Initiative Japan Inc. (AS 2497)",
+          "ipAddress": "202.232.0.3",
+          "monitorName": "Tokyo-4",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 78,
+          "network": "SoftLayer Technologies Inc. (AS 36351)",
+          "ipAddress": "198.32.176.207",
+          "monitorName": "Palo Alto, CA-4",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 80,
+          "network": "Econet Carrier Services AS Numbers (AS 30844)",
+          "ipAddress": "196.223.14.55",
+          "monitorName": "Johannesburg, South Africa",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 83,
+          "network": "Savvis (AS 3561)",
+          "ipAddress": "206.24.210.80",
+          "monitorName": "San Francisco, CA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 178,
+          "network": "TDS TELECOM (AS 4181)",
+          "ipAddress": "198.32.132.28",
+          "monitorName": "Atlanta, GA",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 181,
+          "network": "Qwest Communications Company, LLC (AS 209)",
+          "ipAddress": "205.171.202.202",
+          "monitorName": "Washington, DC-6",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 184,
+          "network": "Qwest Communications Company, LLC (AS 209)",
+          "ipAddress": "205.171.3.22",
+          "monitorName": "San Jose, CA-4",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 190,
+          "network": "NTT America, Inc. (AS 2914)",
+          "ipAddress": "129.250.1.248",
+          "monitorName": "Tokyo-5",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 199,
+          "network": "ClaraNET (AS 8426)",
+          "ipAddress": "195.66.224.66",
+          "monitorName": "London-10",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 202,
+          "network": "Hurricane Electric, Inc. (AS 6939)",
+          "ipAddress": "198.32.132.75",
+          "monitorName": "Atlanta, GA-2",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 205,
+          "network": "TATA COMMUNICATIONS (AMERICA) INC (AS 6453)",
+          "ipAddress": "195.66.224.51",
+          "monitorName": "London-11",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 208,
+          "network": "State of Oregon (AS 1798)",
+          "ipAddress": "198.32.195.23",
+          "monitorName": "Portland, OR",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 399,
+          "network": "Associacao Rede Nacional de Ensino e Pesquisa (AS 1916)",
+          "ipAddress": "187.16.216.4",
+          "monitorName": "São Paulo-8",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 2480,
+          "network": "G8 NETWORKS LTDA (AS 28329)",
+          "ipAddress": "2001:12f8::232",
+          "monitorName": "São Paulo-9",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 2660,
+          "network": "Interoute Communications Ltd (AS 8928)",
+          "ipAddress": "195.66.224.53",
+          "monitorName": "London-12",
+          "monitorType": "Public"
+        },
+        {
+          "monitorId": 3230,
+          "network": "Verizon Business/UUnet (AS 701)",
+          "ipAddress": "137.39.3.55",
+          "monitorName": "Washington, DC-7",
+          "monitorType": "Public"
+        }
+      ],
+      "dscp": "Best Effort (DSCP 0)",
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href": "https://api.thousandeyes.com/v6/tests/470511"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/metrics/470511"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/path-vis/470511"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/470511"
+        }
+      ]
+    }
+  ]
+}

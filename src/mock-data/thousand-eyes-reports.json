@@ -1,0 +1,40 @@
+{
+  "reports": [
+    {
+      "reportId": "5a0e18db49b02d64b0f676d0",
+      "reportName": "New Report",
+      "builtIn": 0,
+      "widgets": [],
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href":
+            "https://api.thousandeyes.com/v6/reports/5a0e18db49b02d64b0f676d0"
+        },
+        {
+          "rel": "snapshots",
+          "href":
+            "https://api.thousandeyes.com/v6/report-snapshots?reportId=5a0e18db49b02d64b0f676d0"
+        }
+      ]
+    },
+    {
+      "reportId": "59781491755cb0594dc5ffbc",
+      "reportName": "AM3 to EMEA Report",
+      "builtIn": 0,
+      "widgets": [],
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href":
+            "https://api.thousandeyes.com/v6/reports/59781491755cb0594dc5ffbc"
+        },
+        {
+          "rel": "snapshots",
+          "href":
+            "https://api.thousandeyes.com/v6/report-snapshots?reportId=59781491755cb0594dc5ffbc"
+        }
+      ]
+    }
+  ]
+}
