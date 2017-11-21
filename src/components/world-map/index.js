@@ -23,7 +23,7 @@ class WorldMap extends Component {
     });
   }
 
-  ppointToMarkerHtml = () => {
+  pointToMarkerHtml = () => {
     return (
       <circle
         cx={this.projection()([8, 58])[0]}
@@ -37,7 +37,7 @@ class WorldMap extends Component {
 
   generateMarkers = () => {
     const allMArkers = _.chain([{}, {}, {}])
-      .map(this.ppointToMarkerHtml)
+      .map(this.pointToMarkerHtml)
       .value();
 
     return allMArkers;
@@ -47,7 +47,12 @@ class WorldMap extends Component {
     const { width, height } = this.props;
 
     return (
-      <svg width={width} height={height} viewBox="0 0 800 450">
+      <svg
+        width={width}
+        height={height}
+        viewBox={`${0} ${width / 128} ${width / 1.6} ${height / 1.7}`}
+        className="map-root"
+      >
         <g className="countries">
           {this.state.worldData.map((d, i) => (
             <path

@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="app">
         <div className="world-map">
-          <WorldMap width={1440} height={800} />
+          <WorldMap width={1280} height={800} />
         </div>
         <div className="data-readout" />
       </div>
