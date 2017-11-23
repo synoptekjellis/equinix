@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { feature } from 'topojson-client';
 
 import cities from '../cities';
-import datacenterLocations from '../datacenter-locations';
 import worldJson from './world-110m.json';
 
 class WorldMap extends Component {
@@ -60,7 +59,8 @@ class WorldMap extends Component {
   };
 
   generateMarkers = () => {
-    const allMArkers = _.chain(datacenterLocations)
+    const { locations } = this.props;
+    const allMArkers = _.chain(locations)
       .map(this.pointToMarkerHtml)
       .value();
 
