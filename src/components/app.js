@@ -12,6 +12,8 @@ class App extends Component {
   componentDidMount() {}
 
   render() {
+    console.log('datacenterLocations', datacenterLocations);
+
     const filteredLocations = datacenterLocations;
     const height = 600;
     const width = 1280;

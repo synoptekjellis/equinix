@@ -7,12 +7,19 @@
 .filter-frame {
   display: flex;
   flex-direction: row;
-  height: 60;
-  background-color: pink;
+  margin: 0;
+  padding: 0;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 }
 .data-table {
   display: flex;
   flex-direction: row;
+  height: 150px;
+  overflow-y: auto;
   flex-grow: 1;
-  background-color: green;
 }
