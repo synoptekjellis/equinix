@@ -10,7 +10,8 @@ class WorldMap extends Component {
   constructor() {
     super();
     this.state = {
-      worldData: []
+      worldData: [],
+      hovering: {}
     };
   }
   projection() {
@@ -41,8 +42,13 @@ class WorldMap extends Component {
     const x = this.projection()(latlong)[0];
     const y = this.projection()(latlong)[1];
 
-    const r = isAgent ? 3 : 1;
-    const fill = isAgent ? '#E91E63' : '#eee';
+    let r = isAgent ? 2.5 : 1.25;
+    const fill = isAgent ? '#E91E63' : '#E91EC0';
+
+    if (this.state.hovering.name === point.name) {
+      r = r * 2;
+    }
+
     return (
       <circle
         key={`marker-${index}`}
@@ -52,7 +58,15 @@ class WorldMap extends Component {
         fill={fill}
         className="marker"
         onMouseEnter={event => {
-          console.log('hi!');
+          //TODO; make dispatchers
+          this.setState({
+            hovering: point
+          });
+        }}
+        onMouseLeave={event => {
+          this.setState({
+            hovering: {}
+          });
         }}
       />
     );
@@ -74,7 +88,11 @@ class WorldMap extends Component {
       <svg
         width={width}
         height={height}
-        viewBox={`${0} ${width / 128} ${width / 1.6} ${height / 1.7}`}
+        viewBox={`
+          ${width * 0.071} 
+          ${height * 0.1} 
+          ${width * 0.5} 
+          ${height * 0.41}`}
         className="map-root"
       >
         <g className="countries">

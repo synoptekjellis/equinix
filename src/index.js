@@ -1,5 +1,5 @@
 import './index.css';
-import './themes/semantic.paper.css';
+import './themes/semantic.simplex.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
