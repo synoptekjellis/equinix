@@ -26,6 +26,8 @@ class WorldMap extends Component {
   }
 
   pointToMarkerHtml = (point, index) => {
+    const { active, setActive, clearActive } = this.props;
+
     const {
       latitude,
       longitude,
@@ -35,6 +37,7 @@ class WorldMap extends Component {
       region,
       notes,
       name,
+      id,
       isAgent
     } = point;
 
@@ -45,28 +48,23 @@ class WorldMap extends Component {
     let r = isAgent ? 2.5 : 1.25;
     const fill = isAgent ? '#E91E63' : '#E91EC0';
 
-    if (this.state.hovering.name === point.name) {
+    if (active.name === point.name) {
       r = r * 2;
     }
 
     return (
       <circle
-        key={`marker-${index}`}
+        key={`marker-${id}`}
         cx={x}
         cy={y}
         r={r}
         fill={fill}
         className="marker"
         onMouseEnter={event => {
-          //TODO; make dispatchers
-          this.setState({
-            hovering: point
-          });
+          setActive(point);
         }}
         onMouseLeave={event => {
-          this.setState({
-            hovering: {}
-          });
+          clearActive();
         }}
       />
     );
@@ -79,6 +77,30 @@ class WorldMap extends Component {
       .value();
 
     return allMArkers;
+  };
+
+  worldDataToSvg = (d, i) => {
+    const fill = `rgba(38,50,56,${1 / this.state.worldData.length * i})`;
+    const path = geoPath().projection(this.projection())(d);
+    const stroke = '#222';
+    const strokeWidth = 0.5;
+    return (
+      <path
+        key={`country-path-${i}`}
+        d={path}
+        className="country"
+        //control country colors here
+        fill={fill}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+      />
+    );
+  };
+
+  generateCountries = () => {
+    const { worldData } = this.state;
+
+    return _.map(worldData, this.worldDataToSvg);
   };
 
   render() {
@@ -95,19 +117,7 @@ class WorldMap extends Component {
           ${height * 0.41}`}
         className="map-root"
       >
-        <g className="countries">
-          {this.state.worldData.map((d, i) => (
-            <path
-              key={`path-${i}`}
-              d={geoPath().projection(this.projection())(d)}
-              className="country"
-              //control country colors here
-              fill={`rgba(38,50,56,${1 / this.state.worldData.length * i})`}
-              stroke="#222"
-              strokeWidth={0.5}
-            />
-          ))}
-        </g>
+        <g className="countries">{this.generateCountries()}</g>
         <g className="markers">{this.generateMarkers()}</g>
       </svg>
     );

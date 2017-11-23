@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-//import X from './X';
+import map from './map';
 
 const app = combineReducers({
-  //  X
+  map
 });
 
 export default app;

@@ -1,9 +1,8 @@
 import { applyMiddleware, createStore } from 'redux';
 
-import wglSchemaEditor from './state/reducers';
+import equinixViz from './state/reducers';
 
-let store = createStore(wglSchemaEditor, applyMiddleware());
-
+let store = createStore(equinixViz, applyMiddleware());
 const { dispatch, getState, subscribe } = store;
 
 export default store;

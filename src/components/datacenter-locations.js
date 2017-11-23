@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const data = [
   {
     address: '180 Peachtree Street NW Atlanta, GA 30303',
@@ -11,7 +9,8 @@ const data = [
     region: null,
     notes: '',
     name: 'AT1',
-    isAgent: true
+    isAgent: true,
+    id: 0
   },
   {
     address: '1905 Lunt Avenue Elk Grove, IL 60007',
@@ -23,7 +22,8 @@ const data = [
     region: null,
     notes: '',
     name: 'CH3',
-    isAgent: true
+    isAgent: true,
+    id: 1
   },
   {
     address: '1950 North Stemmons Freeway Dallas, TX 75207',
@@ -35,7 +35,8 @@ const data = [
     region: null,
     notes: '',
     name: 'DA6',
-    isAgent: true
+    isAgent: true,
+    id: 2
   },
   {
     address: '21721 Filigree Court Ashburn, VA 20147',
@@ -47,7 +48,8 @@ const data = [
     region: null,
     notes: '',
     name: 'DC6',
-    isAgent: true
+    isAgent: true,
+    id: 3
   },
   {
     address: '1920 East Maple Avenue El Segundo, CA 90245',
@@ -59,7 +61,8 @@ const data = [
     region: null,
     notes: '',
     name: 'LA3',
-    isAgent: true
+    isAgent: true,
+    id: 4
   },
   {
     address: '800 Secaucus Road Secaucus, NJ 07094',
@@ -71,7 +74,8 @@ const data = [
     region: null,
     notes: '',
     name: 'NY5',
-    isAgent: true
+    isAgent: true,
+    id: 5
   },
   {
     address: '2020 Fifth Avenue Seattle, WA 98121',
@@ -83,7 +87,8 @@ const data = [
     region: null,
     notes: '',
     name: 'SE3',
-    isAgent: true
+    isAgent: true,
+    id: 6
   },
   {
     address: '9 Great Oaks Boulevard San Jose, CA 95119',
@@ -95,7 +100,8 @@ const data = [
     region: null,
     notes: '',
     name: 'SV5',
-    isAgent: true
+    isAgent: true,
+    id: 7
   },
   {
     address: 'Science Park 610 1098 XH Amsterdam Netherlands',
@@ -107,7 +113,8 @@ const data = [
     region: null,
     notes: '',
     name: 'AM3',
-    isAgent: true
+    isAgent: true,
+    id: 8
   },
   {
     address: 'Lärchenstrasse 110 Frankfurt 65933 Germany',
@@ -119,7 +126,8 @@ const data = [
     region: null,
     notes: '',
     name: 'FR4',
-    isAgent: true
+    isAgent: true,
+    id: 9
   },
   {
     address:
@@ -132,7 +140,8 @@ const data = [
     region: null,
     notes: '',
     name: 'LD5',
-    isAgent: true
+    isAgent: true,
+    id: 10
   },
   {
     address:
@@ -145,7 +154,8 @@ const data = [
     region: null,
     notes: '',
     name: 'HK2',
-    isAgent: true
+    isAgent: true,
+    id: 11
   },
   {
     address:
@@ -158,7 +168,8 @@ const data = [
     region: null,
     notes: '',
     name: 'OS1',
-    isAgent: true
+    isAgent: true,
+    id: 12
   },
   {
     address: '15 Pioneer Walk, Singapore 627753',
@@ -170,7 +181,8 @@ const data = [
     region: null,
     notes: '',
     name: 'SG2',
-    isAgent: true
+    isAgent: true,
+    id: 13
   },
   {
     address: '200 Bourke Road, Alexandria, Sydney NSW 2015 Australia',
@@ -182,7 +194,8 @@ const data = [
     region: null,
     notes: '',
     name: 'SY4',
-    isAgent: true
+    isAgent: true,
+    id: 14
   },
   {
     address:
@@ -195,7 +208,8 @@ const data = [
     region: null,
     notes: '',
     name: 'TY4',
-    isAgent: true
+    isAgent: true,
+    id: 15
   },
   {
     latitude: 46.813405,
@@ -206,7 +220,8 @@ const data = [
     region: 'Canada East',
     notes: 'Probably lease of whole space?',
     name: 'Canada East',
-    isAgent: false
+    isAgent: false,
+    id: 16
   },
   {
     latitude: 43.651921,
@@ -217,7 +232,8 @@ const data = [
     region: 'Canada Central',
     notes: 'Probably lease of whole space?',
     name: 'Canada Central',
-    isAgent: false
+    isAgent: false,
+    id: 17
   },
   {
     latitude: 39.021103,
@@ -228,7 +244,8 @@ const data = [
     region: 'East US',
     notes: 'Probably various wholesale leases in Ashburn/Sterling/Reston area?',
     name: 'East US',
-    isAgent: false
+    isAgent: false,
+    id: 18
   },
   {
     latitude: 36.677055,
@@ -239,7 +256,8 @@ const data = [
     region: 'East US 2',
     notes: 'Exact Location',
     name: 'East US 2',
-    isAgent: false
+    isAgent: false,
+    id: 19
   },
   {
     latitude: 41.539845,
@@ -250,7 +268,8 @@ const data = [
     region: 'Central US',
     notes: 'Exact Location',
     name: 'Central US',
-    isAgent: false
+    isAgent: false,
+    id: 20
   },
   {
     latitude: 41.922297,
@@ -261,7 +280,8 @@ const data = [
     region: 'North Central US',
     notes: 'Exact Location',
     name: 'North Central US',
-    isAgent: false
+    isAgent: false,
+    id: 21
   },
   {
     latitude: 29.479869,
@@ -272,7 +292,8 @@ const data = [
     region: 'South Central US',
     notes: 'Exact Location',
     name: 'South Central US',
-    isAgent: false
+    isAgent: false,
+    id: 22
   },
   {
     latitude: 41.124647,
@@ -284,7 +305,8 @@ const data = [
     notes:
       'Exact Location, Per http://cheyenneleads.org/doing-business-here/available-sites/',
     name: 'West Central US',
-    isAgent: false
+    isAgent: false,
+    id: 23
   },
   {
     latitude: 37.35345,
@@ -295,7 +317,8 @@ const data = [
     region: 'West US',
     notes: 'Probably various wholesale leases in Santa Clara area?',
     name: 'West US',
-    isAgent: false
+    isAgent: false,
+    id: 24
   },
   {
     latitude: 47.237593,
@@ -307,7 +330,8 @@ const data = [
     notes:
       'This is a guess, but Microsoft has a large data center here. More info: http://www.zdnet.com/article/photos-a-tour-inside-one-of-microsofts-cloud-data-centers/',
     name: 'West US 2',
-    isAgent: false
+    isAgent: false,
+    id: 25
   },
   {
     latitude: 53.324171,
@@ -318,7 +342,8 @@ const data = [
     region: 'North Europe',
     notes: 'Exact Location',
     name: 'North Europe',
-    isAgent: false
+    isAgent: false,
+    id: 26
   },
   {
     latitude: 52.762827,
@@ -330,7 +355,8 @@ const data = [
     notes:
       'Exact Location, Per http://www.datacenterdynamics.com/content-tracks/design-build/microsofts-2bn-netherlands-data-center-revealed/96753.fullarticle',
     name: 'West Europe',
-    isAgent: false
+    isAgent: false,
+    id: 27
   },
   {
     latitude: 51.481498,
@@ -342,7 +368,8 @@ const data = [
     notes:
       'Wholesale leased, per https://www.theregister.co.uk/2017/05/04/microsoft_azure_capacity_woes_hit_uk_customers/',
     name: 'UK West',
-    isAgent: false
+    isAgent: false,
+    id: 28
   },
   {
     latitude: 51.506914,
@@ -354,7 +381,8 @@ const data = [
     notes:
       'Wholesale leased, per https://www.theregister.co.uk/2017/05/04/microsoft_azure_capacity_woes_hit_uk_customers/',
     name: 'UK South',
-    isAgent: false
+    isAgent: false,
+    id: 29
   },
   {
     latitude: 50.109829,
@@ -366,7 +394,8 @@ const data = [
     notes:
       'Most likely run/operated by Deutsche Telekom for data privacy reasons',
     name: 'Germany Central',
-    isAgent: false
+    isAgent: false,
+    id: 30
   },
   {
     latitude: 51.985065,
@@ -378,7 +407,8 @@ const data = [
     notes:
       'Operated by Deutsche Telekom, Exact Location, Per https://www.welt.de/wirtschaft/webwelt/article148712634/Microsoft-fluechtet-in-den-deutschen-Datenbunker.html',
     name: 'Germany Northeast',
-    isAgent: false
+    isAgent: false,
+    id: 31
   },
   {
     latitude: 1.353449,
@@ -389,7 +419,8 @@ const data = [
     region: 'Southeast Asia',
     notes: 'Probably lease of whole space?',
     name: 'Southeast Asia',
-    isAgent: false
+    isAgent: false,
+    id: 32
   },
   {
     latitude: 22.284351,
@@ -400,7 +431,8 @@ const data = [
     region: 'East Asia',
     notes: 'Probably lease of whole space?',
     name: 'East Asia',
-    isAgent: false
+    isAgent: false,
+    id: 33
   },
   {
     latitude: -33.785169,
@@ -412,7 +444,8 @@ const data = [
     notes:
       'Older ones possibly NextDC per http://www.datacenterdynamics.com/content-tracks/colo-cloud/microsoft-to-open-australian-facilities-next-week/90724.article, New ones possibly Airtrunk per http://www.datacenterdynamics.com/content-tracks/design-build/airtrunk-gets-400m-investment-report/97800.fullarticle',
     name: 'Australia East',
-    isAgent: false
+    isAgent: false,
+    id: 34
   },
   {
     latitude: -37.822634,
@@ -424,7 +457,8 @@ const data = [
     notes:
       'Older ones possibly NextDC per http://www.datacenterdynamics.com/content-tracks/colo-cloud/microsoft-to-open-australian-facilities-next-week/90724.article, New ones possibly Airtrunk per http://www.datacenterdynamics.com/content-tracks/design-build/airtrunk-gets-400m-investment-report/97800.fullarticle',
     name: 'Australia Southeast',
-    isAgent: false
+    isAgent: false,
+    id: 35
   },
   {
     latitude: 18.578739,
@@ -435,7 +469,8 @@ const data = [
     region: 'Central India',
     notes: 'Using Web Werks Pune Datacenter (Future home of an IX) as anchor',
     name: 'Central India',
-    isAgent: false
+    isAgent: false,
+    id: 36
   },
   {
     latitude: 19.141041,
@@ -446,7 +481,8 @@ const data = [
     region: 'West India',
     notes: 'Using Web Werks MUM DC2 (Home of Mumbai IX) as anchor',
     name: 'West India',
-    isAgent: false
+    isAgent: false,
+    id: 37
   },
   {
     latitude: 13.005699,
@@ -457,7 +493,8 @@ const data = [
     region: 'South India',
     notes: 'Approximate location of NIXI - Chennai',
     name: 'South India',
-    isAgent: false
+    isAgent: false,
+    id: 38
   },
   {
     latitude: 35.915578,
@@ -469,7 +506,8 @@ const data = [
     notes:
       'Lease of wholesale space per https://data-economy.com/microsoft-azure-customers-hit-data-centre-outage/',
     name: 'Japan East',
-    isAgent: false
+    isAgent: false,
+    id: 39
   },
   {
     latitude: 34.741493,
@@ -480,7 +518,8 @@ const data = [
     region: 'Japan West',
     notes: 'Probably lease of whole space?',
     name: 'Japan West',
-    isAgent: false
+    isAgent: false,
+    id: 40
   },
   {
     latitude: 37.397839,
@@ -492,7 +531,8 @@ const data = [
     notes:
       'LG U+ Datacenter Per http://www.koreatimes.co.kr/www/news/tech/2016/05/133_204505.html, Exact Location, per https://www.youtube.com/watch?v=bUwZiMmzgrs',
     name: 'Korea Central',
-    isAgent: false
+    isAgent: false,
+    id: 41
   },
   {
     latitude: 35.138037,
@@ -504,7 +544,8 @@ const data = [
     notes:
       'LG CNS Datacenter Per http://www.koreatimes.co.kr/www/news/tech/2016/05/133_204505.html, Exact Location per https://www.youtube.com/watch?v=pjrBvqZsjXs',
     name: 'Korea South',
-    isAgent: false
+    isAgent: false,
+    id: 42
   },
   {
     latitude: 39.022032,
@@ -516,7 +557,8 @@ const data = [
     notes:
       'Buildings are scattered around Ashburn and Sterling and new construction per http://www.datacenterknowledge.com/amazon/half-million-square-feet-amazon-data-center-space-under-construction-virginia',
     name: 'us-east-1',
-    isAgent: false
+    isAgent: false,
+    id: 43
   },
   {
     latitude: 40.070249,
@@ -528,7 +570,8 @@ const data = [
     notes:
       'Buildings are scattered around New Albany, Hilliard and Dublin per http://www.dispatch.com/article/20150518/NEWS/305189694',
     name: 'us-east-2',
-    isAgent: false
+    isAgent: false,
+    id: 44
   },
   {
     latitude: 37.35345,
@@ -540,7 +583,8 @@ const data = [
     notes:
       'Santa Clara per https://datacenterfrontier.com/regional-data-center-clusters-power-amazons-cloud/',
     name: 'us-west-1',
-    isAgent: false
+    isAgent: false,
+    id: 45
   },
   {
     latitude: 45.852293,
@@ -552,7 +596,8 @@ const data = [
     notes:
       'Near Boardman, OR per http://www.oregonlive.com/silicon-forest/index.ssf/2011/11/amazon_confirms_its_data_cente.html',
     name: 'us-west-2',
-    isAgent: false
+    isAgent: false,
+    id: 46
   },
   {
     latitude: 45.498241,
@@ -564,7 +609,8 @@ const data = [
     notes:
       'Near Montreal per https://venturebeat.com/2016/12/08/amazons-first-canadian-aws-data-centers-go-live/',
     name: 'ca-central-1',
-    isAgent: false
+    isAgent: false,
+    id: 47
   },
   {
     latitude: 53.405155,
@@ -576,7 +622,8 @@ const data = [
     notes:
       'Various sites around Dublin per http://www.datacenterknowledge.com/archives/2011/02/09/amazon-buys-dublin-site-for-data-center',
     name: 'eu-west-1',
-    isAgent: false
+    isAgent: false,
+    id: 48
   },
   {
     latitude: 51.506914,
@@ -587,7 +634,8 @@ const data = [
     region: 'eu-west-2',
     notes: '',
     name: 'eu-west-2',
-    isAgent: false
+    isAgent: false,
+    id: 49
   },
   {
     latitude: 50.109829,
@@ -598,7 +646,8 @@ const data = [
     region: 'eu-central-1',
     notes: '',
     name: 'eu-central-1',
-    isAgent: false
+    isAgent: false,
+    id: 50
   },
   {
     latitude: 35.707499,
@@ -609,7 +658,8 @@ const data = [
     region: 'ap-northeast-1',
     notes: '',
     name: 'ap-northeast-1',
-    isAgent: false
+    isAgent: false,
+    id: 51
   },
   {
     latitude: 37.565379,
@@ -620,7 +670,8 @@ const data = [
     region: 'ap-northeast-2',
     notes: '',
     name: 'ap-northeast-2',
-    isAgent: false
+    isAgent: false,
+    id: 52
   },
   {
     latitude: 1.353449,
@@ -631,7 +682,8 @@ const data = [
     region: 'ap-southeast-1',
     notes: '',
     name: 'ap-southeast-1',
-    isAgent: false
+    isAgent: false,
+    id: 53
   },
   {
     latitude: -33.875727,
@@ -642,7 +694,8 @@ const data = [
     region: 'ap-southeast-2',
     notes: '',
     name: 'ap-southeast-2',
-    isAgent: false
+    isAgent: false,
+    id: 54
   },
   {
     latitude: 19.078107,
@@ -653,7 +706,8 @@ const data = [
     region: 'ap-south-1',
     notes: '',
     name: 'ap-south-1',
-    isAgent: false
+    isAgent: false,
+    id: 55
   },
   {
     latitude: 33.063464,
@@ -664,7 +718,8 @@ const data = [
     region: 'us-east1',
     notes: 'Exact Location',
     name: 'us-east1',
-    isAgent: false
+    isAgent: false,
+    id: 56
   },
   {
     latitude: 39.021103,
@@ -675,7 +730,8 @@ const data = [
     region: 'us-east4',
     notes: 'Probably various wholesale leases in Ashburn/Sterling/Reston area?',
     name: 'us-east4',
-    isAgent: false
+    isAgent: false,
+    id: 57
   },
   {
     latitude: 41.220828,
@@ -686,7 +742,8 @@ const data = [
     region: 'us-central1',
     notes: 'Exact Location',
     name: 'us-central1',
-    isAgent: false
+    isAgent: false,
+    id: 58
   },
   {
     latitude: 45.632556,
@@ -697,7 +754,8 @@ const data = [
     region: 'us-west1',
     notes: 'Exact Location',
     name: 'us-west1',
-    isAgent: false
+    isAgent: false,
+    id: 59
   },
   {
     latitude: 50.472489,
@@ -708,7 +766,8 @@ const data = [
     region: 'europe-west1',
     notes: 'Exact Location',
     name: 'europe-west1',
-    isAgent: false
+    isAgent: false,
+    id: 60
   },
   {
     latitude: 51.506914,
@@ -719,7 +778,8 @@ const data = [
     region: 'europe-west2',
     notes: 'Probably lease of wholesale space?',
     name: 'europe-west2',
-    isAgent: false
+    isAgent: false,
+    id: 61
   },
   {
     latitude: 50.109829,
@@ -730,7 +790,8 @@ const data = [
     region: 'europe-west3',
     notes: 'Probably lease of wholesale space?',
     name: 'europe-west3',
-    isAgent: false
+    isAgent: false,
+    id: 62
   },
   {
     latitude: 24.139686,
@@ -741,7 +802,8 @@ const data = [
     region: 'asia-east1',
     notes: 'Exact Location',
     name: 'asia-east1',
-    isAgent: false
+    isAgent: false,
+    id: 63
   },
   {
     latitude: 35.707499,
@@ -752,7 +814,8 @@ const data = [
     region: 'asia-northeast1',
     notes: 'Probably lease of wholesale space?',
     name: 'asia-northeast1',
-    isAgent: false
+    isAgent: false,
+    id: 64
   },
   {
     latitude: 1.3507973,
@@ -763,7 +826,8 @@ const data = [
     region: 'asia-southeast1',
     notes: 'Exact Location',
     name: 'asia-southeast1',
-    isAgent: false
+    isAgent: false,
+    id: 65
   },
   {
     latitude: 19.078107,
@@ -774,7 +838,8 @@ const data = [
     region: 'asia-south1',
     notes: 'Probably lease of wholesale space?',
     name: 'asia-south1',
-    isAgent: false
+    isAgent: false,
+    id: 66
   },
   {
     latitude: -33.875727,
@@ -785,7 +850,8 @@ const data = [
     region: 'australia-southeast1',
     notes: 'Probably lease of wholesale space?',
     name: 'australia-southeast1',
-    isAgent: false
+    isAgent: false,
+    id: 67
   },
   {
     latitude: 39.021103,
@@ -796,7 +862,8 @@ const data = [
     region: 'us-ashburn-1',
     notes: '',
     name: 'us-ashburn-1',
-    isAgent: false
+    isAgent: false,
+    id: 68
   },
   {
     latitude: 33.272494,
@@ -807,7 +874,8 @@ const data = [
     region: 'us-phoenix-1',
     notes: 'Digital Reality and Cyrus One are at this location',
     name: 'us-phoenix-1',
-    isAgent: false
+    isAgent: false,
+    id: 69
   },
   {
     latitude: 50.109829,
@@ -818,7 +886,8 @@ const data = [
     region: 'eu-frankfurt-1',
     notes: '',
     name: 'eu-frankfurt-1',
-    isAgent: false
+    isAgent: false,
+    id: 70
   }
 ];
 

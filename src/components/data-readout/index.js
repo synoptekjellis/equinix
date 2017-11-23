@@ -5,57 +5,74 @@ import React, { Component } from 'react';
 import { Icon, Input, Label, Menu, Table } from 'semantic-ui-react';
 
 class DataReadout extends Component {
-  componentDidMount() {}
-
+  //Data
   columnModel = () => {
     return [
       {
+        id: 'name',
         label: 'Name',
         templ: 'name'
       },
       {
+        id: 'address',
         label: 'Address',
         templ: 'address'
       },
       {
+        id: 'latitude',
         label: 'Latitude',
         templ: 'latitude'
       },
       {
+        id: 'longitude',
         label: 'Longitude',
         templ: 'longitude'
       }
     ];
   };
 
+  //Head
   renderHead = () => {
-    const { locations } = this.props;
+    function columnToHeaderCell(cm) {
+      return (
+        <Table.HeaderCell key={`table-headercell-${cm.id}`}>
+          {cm.label}
+        </Table.HeaderCell>
+      );
+    }
 
     return (
       <Table.Header>
-        <Table.Row>
-          {_.map(this.columnModel(), cm => {
-            return <Table.HeaderCell>{cm.label}</Table.HeaderCell>;
-          })}
-        </Table.Row>
+        <Table.Row>{_.map(this.columnModel(), columnToHeaderCell)}</Table.Row>
       </Table.Header>
     );
   };
 
+  //Body
   renderBody = () => {
+    return <Table.Body>{this.renderRows()}</Table.Body>;
+  };
+  renderRows = () => {
     const { locations } = this.props;
+    return _.map(locations, this.locationToHtml);
+  };
+  locationToHtml = location => {
+    function columnToCell(cm) {
+      return (
+        <Table.Cell key={`table-row-${location.id}-cell-${cm.id}`}>
+          {location[cm.templ]}
+        </Table.Cell>
+      );
+    }
     return (
-      <Table.Body>
-        {_.map(locations, location => {
-          let cells = _.map(this.columnModel(), cm => {
-            return <Table.Cell>{location[cm.templ]}</Table.Cell>;
-          });
-
-          return <Table.Row>{cells}</Table.Row>;
-        })}
-      </Table.Body>
+      <Table.Row key={`table-row-${location.id}`}>
+        {_.map(this.columnModel(), columnToCell)}
+      </Table.Row>
     );
   };
+
+  //lifecycle
+  componentDidMount() {}
 
   render() {
     return (
@@ -70,7 +87,7 @@ class DataReadout extends Component {
           />
         </div>
         <div className="data-table">
-          <Table celled fluid>
+          <Table celled>
             {this.renderHead()}
             {this.renderBody()}
           </Table>
