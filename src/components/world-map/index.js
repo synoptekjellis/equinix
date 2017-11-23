@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { feature } from 'topojson-client';
 
 import cities from '../cities';
+import datacenterLocations from '../datacenter-locations';
 import worldJson from './world-110m.json';
 
 class WorldMap extends Component {
@@ -25,13 +26,31 @@ class WorldMap extends Component {
   }
 
   pointToMarkerHtml = (point, index) => {
+    const {
+      latitude,
+      longitude,
+      type,
+      city_state,
+      country,
+      region,
+      notes,
+      name,
+      isAgent
+    } = point;
+
+    const latlong = [longitude, latitude];
+    const x = this.projection()(latlong)[0];
+    const y = this.projection()(latlong)[1];
+
+    const r = isAgent ? 3 : 1;
+    const fill = isAgent ? '#E91E63' : '#eee';
     return (
       <circle
         key={`marker-${index}`}
-        cx={this.projection()(point.coordinates)[0]}
-        cy={this.projection()(point.coordinates)[1]}
-        r={3}
-        fill="#E91E63"
+        cx={x}
+        cy={y}
+        r={r}
+        fill={fill}
         className="marker"
         onMouseEnter={event => {
           console.log('hi!');
@@ -41,7 +60,7 @@ class WorldMap extends Component {
   };
 
   generateMarkers = () => {
-    const allMArkers = _.chain(cities)
+    const allMArkers = _.chain(datacenterLocations)
       .map(this.pointToMarkerHtml)
       .value();
 
