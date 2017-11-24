@@ -57,6 +57,7 @@ class DataReadout extends Component {
     return _.map(locations, this.locationToHtml);
   };
   locationToHtml = location => {
+    const { active, setActive, clearActive } = this.props;
     function columnToCell(cm) {
       return (
         <Table.Cell key={`table-row-${location.id}-cell-${cm.id}`}>
@@ -64,8 +65,24 @@ class DataReadout extends Component {
         </Table.Cell>
       );
     }
+
+    let isActive = false;
+    if (active.id === location.id) {
+      isActive = true;
+    }
+
     return (
-      <Table.Row key={`table-row-${location.id}`}>
+      <Table.Row
+        active={isActive}
+        key={`table-row-${location.id}`}
+        onClick={event => {
+          if (isActive) {
+            clearActive();
+          } else {
+            setActive(location);
+          }
+        }}
+      >
         {_.map(this.columnModel(), columnToCell)}
       </Table.Row>
     );
@@ -87,7 +104,7 @@ class DataReadout extends Component {
           />
         </div>
         <div className="data-table">
-          <Table celled>
+          <Table celled selectable>
             {this.renderHead()}
             {this.renderBody()}
           </Table>

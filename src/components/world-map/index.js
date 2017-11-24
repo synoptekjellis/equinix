@@ -47,8 +47,9 @@ class WorldMap extends Component {
 
     let r = isAgent ? 2.5 : 1.25;
     const fill = isAgent ? '#E91E63' : '#E91EC0';
+    const isActive = active.name === point.name;
 
-    if (active.name === point.name) {
+    if (isActive) {
       r = r * 2;
     }
 
@@ -61,10 +62,17 @@ class WorldMap extends Component {
         fill={fill}
         className="marker"
         onMouseEnter={event => {
-          setActive(point);
+          //setActive(point);
         }}
         onMouseLeave={event => {
-          clearActive();
+          //clearActive();
+        }}
+        onClick={event => {
+          if (isActive) {
+            clearActive();
+          } else {
+            setActive(point);
+          }
         }}
       />
     );

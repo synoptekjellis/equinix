@@ -31,8 +31,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('datacenterLocations', datacenterLocations);
-
     const { active } = this.props.map;
 
     const filteredLocations = datacenterLocations;
@@ -56,7 +54,12 @@ class App extends Component {
           />
         </div>
         <div className="data-readout-frame">
-          <DataReadout locations={filteredLocations} active={active} />
+          <DataReadout
+            locations={filteredLocations}
+            active={active}
+            setActive={this.setActive}
+            clearActive={this.clearActive}
+          />
         </div>
       </div>
     );
