@@ -189,7 +189,7 @@ class WorldMap extends Component {
   };
 
   worldDataToSvg = (d, i) => {
-    const fill = `rgba(38,50,56,${1 / this.state.worldData.length * i})`;
+    const fill = `rgba(88,88,88,${1 / this.state.worldData.length * i})`;
     const path = d3.geoPath().projection(this.projection())(d);
     const stroke = '#222';
     const strokeWidth = 0.5;
