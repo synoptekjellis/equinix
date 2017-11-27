@@ -93,13 +93,18 @@ class WorldMap extends Component {
     const isActive = active.id === point.id;
     const isHovering = hovering.id === point.id;
 
-    let r = isAgent ? 2.5 : 1.25;
-    const basicFill = isAgent ? '#E91E63' : '#993d5c';
+    let r = isAgent ? 2 : 1.15;
+    const basicFill = isAgent ? '#E91E63' : '#ccbd14';
     const activeFill = isAgent ? '#f0ff16' : '#ccbd14';
     const fill = isActive ? activeFill : basicFill;
 
     if (isHovering) {
       r = r * 2;
+    }
+
+    let opacity = active.id && isAgent ? 0.4 : 0.9;
+    if (active && isActive) {
+      opacity = 1;
     }
 
     return (
@@ -109,6 +114,7 @@ class WorldMap extends Component {
         cy={y}
         r={r}
         fill={fill}
+        opacity={opacity}
         className="marker"
         onMouseEnter={event => {
           this.setState({
