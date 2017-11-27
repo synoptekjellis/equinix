@@ -185,10 +185,10 @@ class WorldMap extends Component {
         width={width}
         height={height}
         viewBox={`
-          ${width * 0.071} 
-          ${height * 0.1} 
-          ${width * 0.5} 
-          ${height * 0.41}`}
+          ${width * 0.0725} 
+          ${height * 0.2} 
+          ${width * 0.475} 
+          ${height * 0.2}`}
         className="map-root"
       >
         <g className="countries">{this.generateCountries()}</g>
