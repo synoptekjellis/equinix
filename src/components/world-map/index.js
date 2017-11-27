@@ -46,7 +46,7 @@ class WorldMap extends Component {
   }
 
   zoomed = () => {
-    console.log('ZOOMED', d3.event);
+    //console.log('ZOOMED', d3.event);
 
     this.setState({
       zoomTransform: d3.event.transform
@@ -218,7 +218,7 @@ class WorldMap extends Component {
     const { active } = this.props;
 
     if (this.state.zooming) {
-      console.log('zooming');
+      //console.log('zooming');
       return;
     }
 
@@ -232,9 +232,27 @@ class WorldMap extends Component {
     const speed = 750;
 
     if (needToZoomIn) {
-      const latlong = [active.longitude, active.latitude];
-      const x = this.projection()(latlong)[0];
-      const y = this.projection()(latlong)[1];
+      const latlong1 = [active.longitude, active.latitude];
+      const x1 = this.projection()(latlong1)[0];
+      const y1 = this.projection()(latlong1)[1];
+
+      console.log(x1, y1, [active.longitude, active.latitude]);
+
+      let bbox = this.refs.svg.getBoundingClientRect();
+
+      var x = d3
+        .scaleLinear()
+        .domain([180, -180])
+        .range([-this.props.width * 0.75, this.props.width * 0.75]);
+
+      var y = d3
+        .scaleLinear()
+        .domain([90, -90])
+        .range([this.props.height * 0.5, -this.props.height * 0.5]);
+
+      console.log(bbox);
+
+      console.log('->', x(active.longitude), '|', y(active.latitude));
 
       d3
         .select(this.refs.svg)
@@ -242,7 +260,9 @@ class WorldMap extends Component {
         .duration(speed)
         .call(
           this.zoom.transform,
-          d3.zoomIdentity.translate(y * 2, x * 2).scale(2)
+          d3.zoomIdentity
+            .translate(x(active.longitude), y(active.latitude))
+            .scale(1.5)
         );
     }
 
@@ -257,7 +277,7 @@ class WorldMap extends Component {
 
   componentDidUpdate() {
     const { active } = this.props;
-    console.log('updating', this.state.zooming);
+    //console.log('updating', this.state.zooming);
     this.doZoom();
   }
 
