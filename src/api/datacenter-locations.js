@@ -23,7 +23,7 @@ const data = [
     notes: '',
     name: 'CH3',
     isAgent: true,
-    id: 1
+    id: 46499
   },
   {
     address: '1950 North Stemmons Freeway Dallas, TX 75207',
@@ -62,7 +62,7 @@ const data = [
     notes: '',
     name: 'LA3',
     isAgent: true,
-    id: 4
+    id: 47477
   },
   {
     address: '800 Secaucus Road Secaucus, NJ 07094',
@@ -260,6 +260,18 @@ const data = [
     id: 19
   },
   {
+    latitude: 29.479869,
+    longitude: -98.692523,
+    type: 'Azure Locations',
+    city_state: 'San Antonio, Texas',
+    country: 'USA',
+    region: 'South Central US',
+    notes: 'Exact Location',
+    name: 'South Central US',
+    isAgent: false,
+    id: 22
+  },
+  {
     latitude: 41.539845,
     longitude: -93.824348,
     type: 'Azure Locations',
@@ -283,18 +295,7 @@ const data = [
     isAgent: false,
     id: 21
   },
-  {
-    latitude: 29.479869,
-    longitude: -98.692523,
-    type: 'Azure Locations',
-    city_state: 'San Antonio, Texas',
-    country: 'USA',
-    region: 'South Central US',
-    notes: 'Exact Location',
-    name: 'South Central US',
-    isAgent: false,
-    id: 22
-  },
+
   {
     latitude: 41.124647,
     longitude: -104.898599,

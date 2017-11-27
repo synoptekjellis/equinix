@@ -1,0 +1,221 @@
+{
+  "from": "2017-11-27 03:20:00",
+  "to": "2017-11-27 04:25:00",
+  "net": {
+    "test": {
+      "createdDate": "2017-11-10 15:38:32",
+      "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "enabled": 1,
+      "savedEvent": 0,
+      "testId": 470502,
+      "testName": "LA3 via Equinix Connect",
+      "type": "agent-to-agent",
+      "interval": 300,
+      "port": 49153,
+      "protocol": "TCP",
+      "networkMeasurements": 1,
+      "mtuMeasurements": 1,
+      "bgpMeasurements": 1,
+      "throughputMeasurements": 0,
+      "dscpId": 0,
+      "alertsEnabled": 0,
+      "liveShare": 0,
+      "targetAgentId": 47477,
+      "throughputDuration": 10000,
+      "throughputRate": 64,
+      "mss": 200,
+      "direction": "BIDIRECTIONAL",
+      "dscp": "Best Effort (DSCP 0)",
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href": "https://api.thousandeyes.com/v6/tests/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/metrics/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/path-vis/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/470502"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.6375714,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:20:32",
+        "agentId": 46499,
+        "roundId": 1511752800,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511752800&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 62.0,
+        "loss": 0.0,
+        "jitter": 0.5040445,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:25:32",
+        "agentId": 46499,
+        "roundId": 1511753100,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511753100&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.5960442,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:30:32",
+        "agentId": 46499,
+        "roundId": 1511753400,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511753400&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 62.0,
+        "loss": 0.0,
+        "jitter": 0.22074804,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:35:33",
+        "agentId": 46499,
+        "roundId": 1511753700,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511753700&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 60.0,
+        "loss": 0.0,
+        "jitter": 0.32907173,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:40:33",
+        "agentId": 46499,
+        "roundId": 1511754000,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511754000&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.37519953,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:45:32",
+        "agentId": 46499,
+        "roundId": 1511754300,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511754300&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 60.0,
+        "loss": 0.0,
+        "jitter": 0.4563404,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:50:32",
+        "agentId": 46499,
+        "roundId": 1511754600,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511754600&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.4850965,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 03:55:32",
+        "agentId": 46499,
+        "roundId": 1511754900,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511754900&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 62.0,
+        "loss": 0.0,
+        "jitter": 0.1632653,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:00:32",
+        "agentId": 46499,
+        "roundId": 1511755200,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511755200&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.42072505,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:05:32",
+        "agentId": 46499,
+        "roundId": 1511755500,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511755500&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 60.0,
+        "loss": 0.0,
+        "jitter": 0.19253023,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:10:32",
+        "agentId": 46499,
+        "roundId": 1511755800,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511755800&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 62.0,
+        "loss": 0.0,
+        "jitter": 0.6388766,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:15:32",
+        "agentId": 46499,
+        "roundId": 1511756100,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511756100&agentId=46499&direction=BIDIRECTIONAL"
+      },
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.45861644,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:20:33",
+        "agentId": 46499,
+        "roundId": 1511756400,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511756400&agentId=46499&direction=BIDIRECTIONAL"
+      }
+    ]
+  },
+  "pages": { "current": 1 }
+}

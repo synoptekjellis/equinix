@@ -1,0 +1,63 @@
+{
+  "net": {
+    "test": {
+      "createdDate": "2017-11-10 15:38:32",
+      "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "enabled": 1,
+      "savedEvent": 0,
+      "testId": 470502,
+      "testName": "LA3 via Equinix Connect",
+      "type": "agent-to-agent",
+      "interval": 300,
+      "port": 49153,
+      "protocol": "TCP",
+      "networkMeasurements": 1,
+      "mtuMeasurements": 1,
+      "bgpMeasurements": 1,
+      "throughputMeasurements": 0,
+      "dscpId": 0,
+      "alertsEnabled": 0,
+      "liveShare": 0,
+      "targetAgentId": 47477,
+      "throughputDuration": 10000,
+      "throughputRate": 64,
+      "mss": 200,
+      "direction": "BIDIRECTIONAL",
+      "dscp": "Best Effort (DSCP 0)",
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href": "https://api.thousandeyes.com/v6/tests/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/metrics/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/path-vis/470502"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/470502"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "avgLatency": 61.0,
+        "loss": 0.0,
+        "jitter": 0.45861644,
+        "direction": "BIDIRECTIONAL",
+        "agentName": "CH3 SVC",
+        "countryId": "US",
+        "date": "2017-11-27 04:20:33",
+        "agentId": 46499,
+        "roundId": 1511756400,
+        "permalink":
+          "https://app.thousandeyes.com/view/tests?__a=45471&testId=470502&roundId=1511756400&agentId=46499&direction=BIDIRECTIONAL"
+      }
+    ]
+  },
+  "pages": { "current": 1 }
+}

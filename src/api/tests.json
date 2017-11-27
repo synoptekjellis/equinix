@@ -88,7 +88,9 @@
     },
     {
       "createdDate": "2017-11-14 05:53:11",
+      "modifiedDate": "2017-11-22 16:18:31",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471868,
@@ -121,7 +123,7 @@
     },
     {
       "createdDate": "2017-11-14 05:46:18",
-      "modifiedDate": "2017-11-14 05:46:34",
+      "modifiedDate": "2017-11-22 16:18:39",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -156,7 +158,9 @@
     },
     {
       "createdDate": "2017-11-14 05:49:49",
+      "modifiedDate": "2017-11-22 16:18:48",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471863,
@@ -189,7 +193,9 @@
     },
     {
       "createdDate": "2017-11-14 05:54:11",
+      "modifiedDate": "2017-11-22 16:18:57",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471869,
@@ -222,7 +228,9 @@
     },
     {
       "createdDate": "2017-11-14 05:26:08",
+      "modifiedDate": "2017-11-22 16:13:49",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471845,
@@ -266,7 +274,7 @@
     },
     {
       "createdDate": "2017-10-25 01:55:44",
-      "modifiedDate": "2017-11-10 15:39:01",
+      "modifiedDate": "2017-11-22 16:14:27",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -311,7 +319,7 @@
     },
     {
       "createdDate": "2017-10-25 01:54:46",
-      "modifiedDate": "2017-11-10 15:39:09",
+      "modifiedDate": "2017-11-22 16:16:25",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -356,7 +364,7 @@
     },
     {
       "createdDate": "2017-10-25 01:52:41",
-      "modifiedDate": "2017-11-10 15:39:15",
+      "modifiedDate": "2017-11-22 16:16:36",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -401,7 +409,7 @@
     },
     {
       "createdDate": "2017-10-25 01:53:25",
-      "modifiedDate": "2017-11-10 15:39:22",
+      "modifiedDate": "2017-11-22 16:17:01",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -446,7 +454,9 @@
     },
     {
       "createdDate": "2017-11-14 05:21:52",
+      "modifiedDate": "2017-11-22 16:17:11",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471843,
@@ -490,7 +500,9 @@
     },
     {
       "createdDate": "2017-11-14 05:21:07",
+      "modifiedDate": "2017-11-22 16:17:18",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471842,
@@ -534,7 +546,9 @@
     },
     {
       "createdDate": "2017-11-14 05:19:20",
+      "modifiedDate": "2017-11-22 16:17:27",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471840,
@@ -578,7 +592,7 @@
     },
     {
       "createdDate": "2017-10-24 19:39:17",
-      "modifiedDate": "2017-11-10 15:39:55",
+      "modifiedDate": "2017-11-22 16:17:34",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -624,7 +638,7 @@
     },
     {
       "createdDate": "2017-11-14 05:17:53",
-      "modifiedDate": "2017-11-14 05:18:17",
+      "modifiedDate": "2017-11-22 16:20:08",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -670,7 +684,7 @@
     },
     {
       "createdDate": "2017-10-24 19:41:10",
-      "modifiedDate": "2017-11-10 15:40:09",
+      "modifiedDate": "2017-11-22 16:17:42",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -716,7 +730,7 @@
     },
     {
       "createdDate": "2017-10-24 19:40:25",
-      "modifiedDate": "2017-11-10 15:40:17",
+      "modifiedDate": "2017-11-22 16:17:52",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -762,7 +776,9 @@
     },
     {
       "createdDate": "2017-11-14 05:20:21",
+      "modifiedDate": "2017-11-22 16:18:07",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
       "savedEvent": 0,
       "testId": 471841,
@@ -806,7 +822,7 @@
     },
     {
       "createdDate": "2017-10-24 19:42:44",
-      "modifiedDate": "2017-11-10 15:40:24",
+      "modifiedDate": "2017-11-22 16:20:33",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -852,7 +868,7 @@
     },
     {
       "createdDate": "2017-10-24 19:42:00",
-      "modifiedDate": "2017-11-10 15:40:31",
+      "modifiedDate": "2017-11-22 16:18:16",
       "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "modifiedBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
       "enabled": 1,
@@ -893,6 +909,94 @@
         {
           "rel": "data",
           "href": "https://api.thousandeyes.com/v6/net/path-vis/461201"
+        }
+      ]
+    },
+    {
+      "createdDate": "2017-11-17 21:40:24",
+      "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "enabled": 1,
+      "savedEvent": 0,
+      "testId": 475153,
+      "testName": "OCI us-ashburn-1 Bucket via Equinix Connect",
+      "type": "http-server",
+      "interval": 300,
+      "url":
+        "https://objectstorage.us-ashburn-1.oraclecloud.com/n/equinixcloudexchangecustomer/b/te-us-ashburn-1-bucket/o",
+      "networkMeasurements": 1,
+      "mtuMeasurements": 0,
+      "bandwidthMeasurements": 0,
+      "bgpMeasurements": 0,
+      "alertsEnabled": 1,
+      "liveShare": 0,
+      "httpTimeLimit": 5,
+      "httpTargetTime": 1000,
+      "followRedirects": 1,
+      "sslVersionId": 0,
+      "verifyCertificate": 1,
+      "useNtlm": 0,
+      "contentRegex": "",
+      "sslVersion": "Auto",
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href": "https://api.thousandeyes.com/v6/tests/475153"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/web/http-server/475153"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/metrics/475153"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/path-vis/475153"
+        }
+      ]
+    },
+    {
+      "createdDate": "2017-11-17 22:22:10",
+      "createdBy": "Mischa Jampolsky (mjampolsky@equinix.com)",
+      "enabled": 1,
+      "savedEvent": 0,
+      "testId": 475165,
+      "testName": "OCI us-phoenix-1 Bucket via Equinix Connect",
+      "type": "http-server",
+      "interval": 300,
+      "url":
+        "https://objectstorage.us-phoenix-1.oraclecloud.com/n/equinixcloudexchangecustomer/b/te-us-phoenix-1-bucket/o",
+      "networkMeasurements": 1,
+      "mtuMeasurements": 0,
+      "bandwidthMeasurements": 0,
+      "bgpMeasurements": 0,
+      "alertsEnabled": 1,
+      "liveShare": 0,
+      "httpTimeLimit": 5,
+      "httpTargetTime": 1000,
+      "followRedirects": 1,
+      "sslVersionId": 0,
+      "verifyCertificate": 1,
+      "useNtlm": 0,
+      "contentRegex": "",
+      "sslVersion": "Auto",
+      "apiLinks": [
+        {
+          "rel": "self",
+          "href": "https://api.thousandeyes.com/v6/tests/475165"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/web/http-server/475165"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/metrics/475165"
+        },
+        {
+          "rel": "data",
+          "href": "https://api.thousandeyes.com/v6/net/path-vis/475165"
         }
       ]
     }

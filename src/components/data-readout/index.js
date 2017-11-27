@@ -9,6 +9,11 @@ class DataReadout extends Component {
   columnModel = () => {
     return [
       {
+        id: 'id',
+        label: 'ID',
+        templ: 'id'
+      },
+      {
         id: 'name',
         label: 'Name',
         templ: 'name'
