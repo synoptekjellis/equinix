@@ -18,7 +18,10 @@
     "css-loader": "0.28.7",
     "d3": "^4.11.0",
     "d3-geo": "^1.9.0",
+    "d3-selection": "^1.2.0",
     "d3-shape": "^1.2.0",
+    "d3-transition": "^1.1.1",
+    "d3-zoom": "^1.7.1",
     "dotenv": "4.0.0",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.0.1",
@@ -66,8 +69,12 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
-    "setupFiles": ["<rootDir>/config/polyfills.js"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -77,10 +84,11 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)":
-        "<rootDir>/config/jest/fileTransform.js"
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
@@ -95,8 +103,12 @@
     ]
   },
   "babel": {
-    "presets": ["react-app"],
-    "plugins": ["transform-decorators-legacy"]
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
   },
   "importSort": {
     ".js, .jsx, .es6, .es": {
