@@ -13,6 +13,7 @@ import datacenterLocations from '../api/datacenter-locations';
 import tests from '../api/tests';
 import { updateActive } from '../state/actions/map';
 import DataReadout from './data-readout';
+import InfoPanel from './infopanel';
 import WorldMap from './world-map';
 
 function stateToComponent(state) {
@@ -169,6 +170,9 @@ class App extends Component {
             clearActive={this.clearActive}
           />
         </div>
+        {active.id ? (
+          <InfoPanel height={height} width={width * 0.25} active={active} />
+        ) : null}
       </div>
     );
   }

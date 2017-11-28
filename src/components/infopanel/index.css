@@ -1,0 +1,31 @@
+.infopanel-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+}
+
+.infopanel {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.infopanel > .list {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.infopanel .listitem {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+.test-listitem > .left.floated.content {
+  margin: 0em 1em 0em 1em;
+}
