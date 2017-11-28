@@ -99,7 +99,7 @@ class DataReadout extends Component {
   render() {
     return (
       <div className="data-readout">
-        <div className="filter-frame">
+        {/* <div className="filter-frame">
           <Input
             fluid
             icon="search"
@@ -107,7 +107,7 @@ class DataReadout extends Component {
             className="filter"
             size="big"
           />
-        </div>
+        </div> */}
         <div className="data-table">
           <Table celled selectable>
             {this.renderHead()}
