@@ -8,6 +8,7 @@
 
 .world-map-frame {
   background-color: #fff;
+  background-color: pink;
   height: 800px;
   display: flex;
   flex-direction: row;
@@ -23,5 +24,5 @@
 }
 
 .map-root {
-  /* background-color: rgba(255, 0, 255, 0.726); */
+  background-color: rgba(255, 0, 255, 0.726);
 }

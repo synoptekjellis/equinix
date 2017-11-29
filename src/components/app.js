@@ -152,7 +152,7 @@ class App extends Component {
 
     const height = 600;
     const width = 1280;
-
+    const panelWidth = width * 0.25;
     console.log(active);
 
     return (
@@ -165,6 +165,7 @@ class App extends Component {
         >
           <WorldMap
             width={width}
+            panelWidth={panelWidth}
             height={height}
             locations={filteredLocations}
             active={active}
@@ -186,7 +187,7 @@ class App extends Component {
         {active.id ? (
           <InfoPanel
             height={height}
-            width={width * 0.25}
+            width={panelWidth}
             active={active}
             activeTest={activeTest}
             setActiveTest={this.setActiveTest}

@@ -7,7 +7,7 @@ import { Button, Image, Label, List } from 'semantic-ui-react';
 
 export default class InfoPanel extends Component {
   activeTestToHtml = test => {
-    const { activeTest, setActiveTest } = this.props;
+    const { activeTest, setActiveTest, clearActiveTest } = this.props;
 
     const color = 'green';
     const size = 'big';
@@ -16,9 +16,14 @@ export default class InfoPanel extends Component {
 
     return (
       <List.Item
+        key={`infopanel-listitem-${test.id}`}
         className="test-listitem"
         onClick={() => {
-          setActiveTest(test);
+          if (isActive) {
+            clearActiveTest();
+          } else {
+            setActiveTest(test);
+          }
         }}
         active={isActive}
       >

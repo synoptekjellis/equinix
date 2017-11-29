@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { feature } from 'topojson-client';
+import { bbox, feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
 
@@ -107,6 +107,8 @@ class WorldMap extends Component {
       opacity = 1;
     }
 
+    let activeRef = isActive ? 'active' : '';
+
     return (
       <circle
         key={`marker-${id}`}
@@ -114,6 +116,7 @@ class WorldMap extends Component {
         cy={y}
         r={r}
         fill={fill}
+        ref={activeRef}
         opacity={opacity}
         className="marker"
         onMouseEnter={event => {
@@ -244,21 +247,40 @@ class WorldMap extends Component {
 
       console.log(x1, y1, [active.longitude, active.latitude]);
 
-      let bbox = this.refs.svg.getBoundingClientRect();
+      // const dx = bounds[1][0] - bounds[0][0];
+      // const dy = bounds[1][1] - bounds[0][1];
+      // const x = (bounds[0][0] + bounds[1][0]) / 2;
+      // const y = (bounds[0][1] + bounds[1][1]) / 2;
+      // const _scale = 0.9 / Math.max(dx / width, dy / height);
+      // const _translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-      var x = d3
-        .scaleLinear()
-        .domain([180, -180])
-        .range([-this.props.width * 0.75, this.props.width * 0.75]);
+      //DOMRect {x: 63.40264892578125, y: 1.0799530744552612, width: 1280, height: 600, top: 1.0799530744552612, …}
+      //DOMRect {x: 259.6080017089844, y: 195.9798583984375, width: 191.30874633789062, height: 88.81570434570312, top: 195.9798583984375, …}
 
-      var y = d3
-        .scaleLinear()
-        .domain([90, -90])
-        .range([this.props.height * 0.5, -this.props.height * 0.5]);
+      let bboxMap = this.refs.svg.getBoundingClientRect();
+      let bboxLines = this.refs.testlines.getBoundingClientRect();
 
-      console.log(bbox);
+      let bboxActive = this.refs.active
+        ? this.refs.active.getBoundingClientRect()
+        : {};
 
-      console.log('->', x(active.longitude), '|', y(active.latitude));
+      let bboxFrame = bboxActive;
+      let zoomTo = 2;
+      if (bboxLines.width > 0) {
+        bboxFrame = bboxLines;
+        //zoomTo=porportion.
+      }
+
+      console.log('map', bboxMap);
+      console.log('lines', bboxLines);
+      console.log('active', bboxActive);
+
+      let offset = this.props.panelWidth * 0.5;
+      let deltaX = bboxMap.width * 0.5 - bboxFrame.x + bboxMap.x + offset;
+      let deltaY = bboxMap.height * 0.5 - bboxFrame.y + bboxMap.y;
+
+      console.log('deltaX', deltaX);
+      console.log('deltaY', deltaY);
 
       d3
         .select(this.refs.svg)
@@ -266,9 +288,7 @@ class WorldMap extends Component {
         .duration(speed)
         .call(
           this.zoom.transform,
-          d3.zoomIdentity
-            .translate(x(active.longitude), y(active.latitude))
-            .scale(2)
+          d3.zoomIdentity.translate(deltaX, deltaY).scale(1)
         );
     }
 
@@ -305,7 +325,9 @@ class WorldMap extends Component {
         transform={`${zoomTransform}`}
       >
         <g className="countries">{this.generateCountries()}</g>
-        <g className="test-lines">{this.generateTestLines()}</g>
+        <g ref="testlines" className="test-lines">
+          {this.generateTestLines()}
+        </g>
         <g ref="tests" className="test-markers">
           {this.generateTestMarkers()}
         </g>
