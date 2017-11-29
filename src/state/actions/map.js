@@ -4,3 +4,10 @@ export function updateActive(value) {
     value: value
   };
 }
+
+export function updateActiveTest(value) {
+  return {
+    type: 'UPDATE_ACTIVE_TEST',
+    value: value
+  };
+}

@@ -1,5 +1,6 @@
 const initial = {
-  active: {}
+  active: {},
+  activeTest: {}
 };
 
 const reducers = {
@@ -7,6 +8,12 @@ const reducers = {
     return {
       ...state,
       ...{ active: value }
+    };
+  },
+  UPDATE_ACTIVE_TEST: (state, value) => {
+    return {
+      ...state,
+      ...{ activeTest: value }
     };
   }
 };

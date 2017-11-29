@@ -2,20 +2,32 @@ import './index.css';
 
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Image, Label, List } from 'semantic-ui-react';
 
-class InfoPanel extends Component {
-  activeTestToHtml = activetest => {
+export default class InfoPanel extends Component {
+  activeTestToHtml = test => {
+    const { activeTest, setActiveTest } = this.props;
+
     const color = 'green';
     const size = 'big';
+
+    const isActive = test.id === activeTest.id;
+
     return (
-      <List.Item className="test-listitem">
+      <List.Item
+        className="test-listitem"
+        onClick={() => {
+          setActiveTest(test);
+        }}
+        active={isActive}
+      >
         <List.Content floated="left" className="speed">
           <Label circular color={color} size={size}>{`${62}`}</Label>
         </List.Content>
         <List.Content>
-          <List.Header>{activetest.name}</List.Header>
-          <List.Description>{activetest.type}</List.Description>
+          <List.Header>{test.name}</List.Header>
+          <List.Description>{test.type}</List.Description>
         </List.Content>
       </List.Item>
     );
@@ -40,5 +52,3 @@ class InfoPanel extends Component {
     );
   }
 }
-
-export default InfoPanel;

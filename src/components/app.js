@@ -11,7 +11,7 @@ import agent46499 from '../api/agents-46499';
 import agent47477 from '../api/agents-47477';
 import datacenterLocations from '../api/datacenter-locations';
 import tests from '../api/tests';
-import { updateActive } from '../state/actions/map';
+import { updateActive, updateActiveTest } from '../state/actions/map';
 import DataReadout from './data-readout';
 import InfoPanel from './infopanel';
 import WorldMap from './world-map';
@@ -135,8 +135,18 @@ class App extends Component {
     dispatch(updateActive({}));
   };
 
+  setActiveTest = test => {
+    const { dispatch } = this.props;
+    dispatch(updateActiveTest(test));
+  };
+
+  clearActiveTest = test => {
+    const { dispatch } = this.props;
+    dispatch(updateActiveTest({}));
+  };
+
   render() {
-    const { active } = this.props.map;
+    const { active, activeTest } = this.props.map;
 
     const filteredLocations = this.state.agents;
 
@@ -158,8 +168,11 @@ class App extends Component {
             height={height}
             locations={filteredLocations}
             active={active}
+            activeTest={activeTest}
             setActive={this.setActive}
             clearActive={this.clearActive}
+            setActiveTest={this.setActiveTest}
+            clearActiveTest={this.clearActiveTest}
           />
         </div>
         <div className="data-readout-frame">
@@ -171,7 +184,14 @@ class App extends Component {
           />
         </div>
         {active.id ? (
-          <InfoPanel height={height} width={width * 0.25} active={active} />
+          <InfoPanel
+            height={height}
+            width={width * 0.25}
+            active={active}
+            activeTest={activeTest}
+            setActiveTest={this.setActiveTest}
+            clearActiveTest={this.clearActiveTest}
+          />
         ) : null}
       </div>
     );
