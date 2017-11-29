@@ -29,6 +29,7 @@ class WorldMap extends Component {
       hovering: {},
       zooming: false,
       zoomedTo: 'map',
+      currentScale: 1,
       zoomTransform: `translate(5.4026494179858275,1.0799531147702623) scale(1)`
     };
 
@@ -221,6 +222,7 @@ class WorldMap extends Component {
     d3.select(this.refs.svg).call(this.zoom);
   }
 
+  currentScale = 1;
   doZoom = () => {
     const { active } = this.props;
 
@@ -239,30 +241,22 @@ class WorldMap extends Component {
     const speed = 750;
 
     if (needToZoomIn) {
-      const latlong1 = [active.longitude, active.latitude];
-
-      //DOMRect {x: 63.40264892578125, y: 1.0799530744552612, width: 1280, height: 600, top: 1.0799530744552612, …}
-      //DOMRect {x: 259.6080017089844, y: 195.9798583984375, width: 191.30874633789062, height: 88.81570434570312, top: 195.9798583984375, …}
-
       let bboxMap = this.refs.svg.getBoundingClientRect();
       let bboxLines = this.refs.testlines.getBoundingClientRect();
-
       let bboxActive = this.refs.active
         ? this.refs.active.getBoundingClientRect()
         : {};
 
       let isAtMap = this.state.zoomedTo === 'map';
+      let hasLines = bboxLines.width > 0;
+      let bboxFrame = hasLines ? bboxLines : bboxActive;
 
-      let zoomTo = 3;
+      let zoomTo = hasLines ? 4 : 3;
 
-      let scaler = isAtMap ? zoomTo : 1;
+      let scaler = zoomTo / this.currentScale;
 
-      let _w = scaler * bboxMap.width;
-      let _h = scaler * bboxMap.height;
-
-      let bboxFrame = bboxLines.width > 0 ? bboxLines : bboxActive;
-      let halfWidth = _w * 0.5;
-      let halfHeight = _h * 0.5;
+      let halfWidth = scaler * bboxMap.width * 0.5;
+      let halfHeight = scaler * bboxMap.height * 0.5;
 
       let offset = this.props.panelWidth * 0.5;
 
@@ -275,10 +269,10 @@ class WorldMap extends Component {
       let deltaX = halfWidth - frameX + mapX + offset;
       let deltaY = halfHeight - frameY + mapY;
 
-      if (bboxLines.width > 0) {
+      if (hasLines) {
         bboxFrame = bboxLines;
-        let halfBoxWidth = bboxFrame.width * 0.5;
-        let halfBoxHeight = bboxFrame.height * 0.5;
+        let halfBoxWidth = scaler * bboxFrame.width * 0.5;
+        let halfBoxHeight = scaler * bboxFrame.height * 0.5;
 
         deltaX = deltaX - halfBoxWidth;
         deltaY = deltaY - halfBoxHeight;
@@ -286,12 +280,11 @@ class WorldMap extends Component {
 
       console.log(halfWidth, frameX, mapX, offset);
 
-      console.log('map', bboxMap);
+      // console.log('map', bboxMap);
       // console.log('lines', bboxLines);
       // console.log('active', bboxActive);
-
-      console.log('deltaX', deltaX);
-      console.log('deltaY', deltaY);
+      // console.log('deltaX', deltaX);
+      // console.log('deltaY', deltaY);
 
       d3
         .select(this.refs.svg)
@@ -301,14 +294,18 @@ class WorldMap extends Component {
           this.zoom.transform,
           d3.zoomIdentity.translate(deltaX, deltaY).scale(zoomTo)
         );
+      this.currentScale = zoomTo;
     }
 
     if (needToZoomOut) {
+      console.log(this.currentScale, '=>', 1);
       d3
         .select(this.refs.svg)
         .transition()
         .duration(speed)
         .call(this.zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
+
+      this.currentScale = 1;
     }
   };
 
