@@ -247,12 +247,9 @@ class WorldMap extends Component {
         ? this.refs.active.getBoundingClientRect()
         : {};
 
-      let isAtMap = this.state.zoomedTo === 'map';
       let hasLines = bboxLines.width > 0;
       let bboxFrame = hasLines ? bboxLines : bboxActive;
-
-      let zoomTo = hasLines ? 4 : 3;
-
+      let zoomTo = hasLines ? bboxMap.width / bboxLines.width * 0.5 : 3;
       let scaler = zoomTo / this.currentScale;
 
       let halfWidth = scaler * bboxMap.width * 0.5;
@@ -278,14 +275,6 @@ class WorldMap extends Component {
         deltaY = deltaY - halfBoxHeight;
       }
 
-      console.log(halfWidth, frameX, mapX, offset);
-
-      // console.log('map', bboxMap);
-      // console.log('lines', bboxLines);
-      // console.log('active', bboxActive);
-      // console.log('deltaX', deltaX);
-      // console.log('deltaY', deltaY);
-
       d3
         .select(this.refs.svg)
         .transition()
@@ -298,7 +287,6 @@ class WorldMap extends Component {
     }
 
     if (needToZoomOut) {
-      console.log(this.currentScale, '=>', 1);
       d3
         .select(this.refs.svg)
         .transition()
