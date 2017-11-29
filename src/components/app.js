@@ -91,10 +91,7 @@ class App extends Component {
     var _tests = fullAgent.agents[0].tests;
 
     var mappedTests = _.map(_tests, t => {
-      console.log(this.testsWithLocation);
-
       return _.find(this.testsWithLocation, twl => {
-        console.log(twl.id, t.testId);
         return twl.id === t.testId;
       });
     });
@@ -153,7 +150,6 @@ class App extends Component {
     const height = 600;
     const width = 1280;
     const panelWidth = width * 0.25;
-    console.log(active);
 
     return (
       <div className="app">
