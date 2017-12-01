@@ -7,7 +7,7 @@ import { CLIENT_LOGO } from './../assets';
 export default class ClientLogo extends Component {
   render() {
     const { clearActive, clearActiveTest } = this.props;
-    const width = 180;
+    const width = 160;
     const margin = 30;
 
     return (

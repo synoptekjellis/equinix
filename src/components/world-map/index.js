@@ -163,7 +163,7 @@ class WorldMap extends Component {
   };
 
   generateTestLines = () => {
-    const { active } = this.props;
+    const { active, activeTest } = this.props;
 
     return _.map(active.tests, test => {
       const latlong1 = [test.longitude, test.latitude];
@@ -174,8 +174,20 @@ class WorldMap extends Component {
       const x2 = this.projection()(latlong2)[0];
       const y2 = this.projection()(latlong2)[1];
 
-      const strokeWidth = 0.25;
+      let strokeWidth = 0.25;
       const fill = '#D32f2f';
+
+      let opacity = 0.9;
+
+      if (activeTest.id) {
+        opacity = 0.2;
+      }
+
+      if (activeTest && activeTest.id === test.id) {
+        opacity = 1;
+        strokeWidth = 0.75;
+      }
+
       return (
         <line
           key={`line-${test.id}`}
@@ -183,6 +195,7 @@ class WorldMap extends Component {
           y1={y1}
           x2={x2}
           y2={y2}
+          opacity={opacity}
           strokeWidth={strokeWidth}
           stroke={fill}
         />
