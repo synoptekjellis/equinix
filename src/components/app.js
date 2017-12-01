@@ -131,6 +131,7 @@ class App extends Component {
   clearActive = point => {
     const { dispatch } = this.props;
     dispatch(updateActive({}));
+    dispatch(updateActiveTest({}));
   };
 
   setActiveTest = test => {
