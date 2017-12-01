@@ -12,6 +12,7 @@ import agent47477 from '../api/agents-47477';
 import datacenterLocations from '../api/datacenter-locations';
 import tests from '../api/tests';
 import { updateActive, updateActiveTest } from '../state/actions/map';
+import ClientLogo from './client-logo';
 import DataReadout from './data-readout';
 import InfoPanel from './infopanel';
 import WorldMap from './world-map';
@@ -190,6 +191,10 @@ class App extends Component {
             clearActiveTest={this.clearActiveTest}
           />
         ) : null}
+        <ClientLogo
+          clearActive={this.clearActive}
+          clearActiveTest={this.clearActiveTest}
+        />
       </div>
     );
   }
