@@ -92,9 +92,9 @@ class WorldMap extends Component {
     const isActive = active.id === point.id;
     const isHovering = hovering.id === point.id;
 
-    let r = isAgent ? 2 : 1.15;
-    const basicFill = isAgent ? '#3618ff' : '#ff9c00';
-    const activeFill = isAgent ? '#ff9c00' : '#ff9c00';
+    let r = isAgent ? 1.5 : 0.75;
+    const basicFill = isAgent ? '#f44336' : '#D32f2f';
+    const activeFill = isAgent ? '#ff0000' : '#D32f2f';
     const fill = isActive ? activeFill : basicFill;
 
     if (isHovering) {
@@ -174,8 +174,8 @@ class WorldMap extends Component {
       const x2 = this.projection()(latlong2)[0];
       const y2 = this.projection()(latlong2)[1];
 
-      const strokeWidth = 0.5;
-      const fill = '#Bf7500';
+      const strokeWidth = 0.25;
+      const fill = '#D32f2f';
       return (
         <line
           key={`line-${test.id}`}
@@ -194,7 +194,7 @@ class WorldMap extends Component {
     const fill = `rgba(60,70,70,${0.7 / this.state.worldData.length * i})`;
     const path = d3.geoPath().projection(this.projection())(d);
     const stroke = '#111';
-    const strokeWidth = 0.25;
+    const strokeWidth = 0.15;
 
     return (
       <path
