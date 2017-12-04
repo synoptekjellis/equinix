@@ -3,9 +3,7 @@ import './index.css';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Image, Label, List } from 'semantic-ui-react';
-import { Accordion } from 'semantic-ui-react';
-import { Icon } from 'semantic-ui-react';
+import { Accordion, Button, Icon, Image, Label, List } from 'semantic-ui-react';
 
 import groups from './groups';
 
@@ -16,11 +14,14 @@ export default class InfoPanel extends Component {
 
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
-
     const color = 'green';
     const size = 'big';
-
     const isActive = test.id === activeTest.id;
+    const thisGroup = _.find(groups, g => {
+      return g.name === test.type;
+    });
+
+    const location = test.address || `${test.city_state}, ${test.country}`;
 
     return (
       <List.Item
@@ -35,12 +36,15 @@ export default class InfoPanel extends Component {
         }}
         active={isActive}
       >
-        <List.Content floated="left" className="speed">
+        <List.Content floated="right" className="speed">
           <Label circular color={color} size={size}>{`${62}`}</Label>
+        </List.Content>
+        <List.Content floated="left" className="icon">
+          <Image src={thisGroup.icon} size="mini" />
         </List.Content>
         <List.Content>
           <List.Header>{test.name}</List.Header>
-          <List.Description>{test.type}</List.Description>
+          <List.Description>{location}</List.Description>
         </List.Content>
       </List.Item>
     );
@@ -74,9 +78,8 @@ export default class InfoPanel extends Component {
     const groupedTests = _.groupBy(active.tests, 'type');
 
     return (
-      <div>
+      <div key={`infopanel-accordionpanel-${group.id}`}>
         <Accordion.Title
-          key={`test-panel-${group.id}`}
           active={activeIndex === index}
           index={index}
           onClick={this.handleClick}
@@ -101,6 +104,8 @@ export default class InfoPanel extends Component {
 
   render() {
     const { height, width, active } = this.props;
+
+    console.log(active.tests);
 
     return (
       <div className="infopanel-frame">

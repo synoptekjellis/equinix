@@ -11,7 +11,27 @@
   display: flex;
   flex-grow: 1;
   overflow-y: auto;
-  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.infopanel .ui .item.test-listitem {
+  padding-top: 0.92307692em;
+  min-height: 64px;
+}
+
+.infopanel .test-listitem .content.speed {
+  padding: 2px 0;
+}
+
+.infopanel .test-listitem .content.icon {
+  padding: 2px 0;
+  margin-right: 4px;
+}
+
+.infopanel .accordion {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: auto;
+  flex-direction: column;
 }
 
 .infopanel > .list {
@@ -26,6 +46,6 @@
   flex-direction: row;
 }
 
-.test-listitem > .left.floated.content {
-  margin: 0em 1em 0em 1em;
+.infopanel .accordion .content.active {
+  padding: 0 0 0 20px;
 }
