@@ -1,6 +1,7 @@
 import './fade.css';
 
 import * as d3 from 'd3';
+import { zoom } from 'd3/node_modules/d3-zoom';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -48,7 +49,7 @@ class WorldMap extends Component {
   }
 
   zoomed = () => {
-    //console.log('ZOOMED', d3.event);
+    //console.log('.');
 
     this.setState({
       zoomTransform: d3.event.transform
@@ -57,9 +58,13 @@ class WorldMap extends Component {
   };
 
   zoomEnd = () => {
+    const { activeTest, active } = this.props;
+
+    //console.log(activeTest.id, active.id, 'map');
+
     this.setState({
       zooming: false,
-      zoomedTo: this.props.active.id || 'map'
+      zoomedTo: activeTest.id || active.id || 'map'
     });
   };
 
@@ -180,7 +185,7 @@ class WorldMap extends Component {
       const fill = '#D32f2f';
 
       let opacity = 0.9;
-
+      let ref = '';
       if (activeTest.id) {
         opacity = 0.2;
       }
@@ -188,11 +193,13 @@ class WorldMap extends Component {
       if (activeTest && activeTest.id === test.id) {
         opacity = 1;
         strokeWidth = 0.75;
+        ref = 'activetest';
       }
 
       return (
         <line
           key={`line-${test.id}`}
+          ref={ref}
           x1={x1}
           y1={y1}
           x2={x2}
@@ -239,25 +246,28 @@ class WorldMap extends Component {
 
   currentScale = 1;
   doZoom = () => {
-    const { active } = this.props;
+    const { active, activeTest } = this.props;
+    const { zoomedTo } = this.state;
+    const maxZoom = 25;
 
     if (this.state.zooming) {
-      //console.log('zooming');
       return;
     }
 
-    if (!active.id && this.state.zoomedTo === 'map') {
-      return;
-    }
+    const needToZoomToLines =
+      !activeTest.id && active.id && zoomedTo != active.id;
+    const needToZoomToLine = activeTest.id && zoomedTo != activeTest.id;
+    const needToZoomToMap = !active.id && zoomedTo != 'map';
 
-    const needToZoomIn = active.id && this.state.zoomedTo != active.id;
-    const needToZoomOut = !active.id && this.state.zoomedTo != 'map';
+    const speed = needToZoomToLine ? 600 : 800;
 
-    const speed = 750;
-
-    if (needToZoomIn) {
+    if (needToZoomToLines || needToZoomToLine) {
       let bboxMap = this.refs.svg.getBoundingClientRect();
-      let bboxLines = this.refs.testlines.getBoundingClientRect();
+
+      let bboxLines = activeTest.id
+        ? this.refs.activetest.getBoundingClientRect()
+        : this.refs.testlines.getBoundingClientRect();
+
       let bboxActive = this.refs.active
         ? this.refs.active.getBoundingClientRect()
         : {};
@@ -265,6 +275,22 @@ class WorldMap extends Component {
       let hasLines = bboxLines.width > 0;
       let bboxFrame = hasLines ? bboxLines : bboxActive;
       let zoomTo = hasLines ? bboxMap.width / bboxLines.width * 0.5 : 3;
+
+      if (hasLines && bboxLines.height > bboxLines.width) {
+        zoomTo = bboxMap.height / bboxLines.height * 0.5;
+      }
+
+      if (hasLines && activeTest.id) {
+        let allLines = this.refs.testlines.getBoundingClientRect();
+        let allBoundary = bboxMap.width / allLines.width * 0.5;
+        let easierZoom = zoomTo * 0.75;
+        zoomTo = easierZoom > allBoundary ? easierZoom : easierZoom;
+      }
+
+      if (zoomTo > maxZoom) {
+        zoomTo = maxZoom;
+      }
+
       let scaler = zoomTo / this.currentScale;
 
       let halfWidth = scaler * bboxMap.width * 0.5;
@@ -301,7 +327,7 @@ class WorldMap extends Component {
       this.currentScale = zoomTo;
     }
 
-    if (needToZoomOut) {
+    if (needToZoomToMap) {
       d3
         .select(this.refs.svg)
         .transition()
@@ -314,7 +340,6 @@ class WorldMap extends Component {
 
   componentDidUpdate() {
     const { active } = this.props;
-    //console.log('updating', this.state.zooming);
     this.doZoom();
   }
 
