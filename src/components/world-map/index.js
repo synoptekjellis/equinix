@@ -52,6 +52,7 @@ class WorldMap extends Component {
     this.setState({
       zoomTransform: d3.event.transform
     });
+    this.currentScale = d3.event.transform.k;
   };
 
   zoomEnd = () => {
