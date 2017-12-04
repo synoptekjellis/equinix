@@ -30,11 +30,12 @@ class WorldMap extends Component {
       zooming: false,
       zoomedTo: 'map',
       currentScale: 1,
-      zoomTransform: `translate(5.4026494179858275,1.0799531147702623) scale(1)`
+      zoomTransform: `translate(0,0) scale(1)`
     };
 
     this.zoom = d3
       .zoom()
+      .scaleExtent([0.9, 6.1])
       .on('zoom', this.zoomed)
       .on('start', this.zoomStart)
       .on('end', this.zoomEnd);
