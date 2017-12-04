@@ -4,8 +4,16 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Image, Label, List } from 'semantic-ui-react';
+import { Accordion } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
+
+import groups from './groups';
 
 export default class InfoPanel extends Component {
+  state = {
+    activeIndex: -1
+  };
+
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
 
@@ -38,10 +46,61 @@ export default class InfoPanel extends Component {
     );
   };
 
+  renderTestlist = tests => {
+    const testsHtml = _.map(tests, this.activeTestToHtml);
+
+    return (
+      <List divided relaxed="very" selection>
+        {testsHtml}
+      </List>
+    );
+  };
+
+  renderGroupPanels = groups => {
+    return _.map(groups, this.groupToPanelHtml);
+  };
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
+  };
+
+  groupToPanelHtml = (group, index) => {
+    const { active } = this.props;
+    const { activeIndex } = this.state;
+    const groupedTests = _.groupBy(active.tests, 'type');
+
+    return (
+      <div>
+        <Accordion.Title
+          key={`test-panel-${group.id}`}
+          active={activeIndex === index}
+          index={index}
+          onClick={this.handleClick}
+        >
+          <Icon name="dropdown" />
+          {`${group.name}`}
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === index}>
+          {this.renderTestlist(groupedTests[group.name])}
+        </Accordion.Content>
+      </div>
+    );
+  };
+
+  renderTestGroups = groups => {
+    return (
+      <Accordion fluid styled>
+        {this.renderGroupPanels(groups)}
+      </Accordion>
+    );
+  };
+
   render() {
     const { height, width, active } = this.props;
-
-    const testsHtml = _.map(active.tests, this.activeTestToHtml);
 
     return (
       <div className="infopanel-frame">
@@ -49,9 +108,7 @@ export default class InfoPanel extends Component {
           className="infopanel"
           style={{ height: `${height}px`, width: `${width}px` }}
         >
-          <List divided relaxed="very" selection>
-            {testsHtml}
-          </List>
+          {this.renderTestGroups(groups)}
         </div>
       </div>
     );
