@@ -83,9 +83,9 @@ export default class InfoPanel extends Component {
           active={activeIndex === index}
           index={index}
           onClick={this.handleClick}
+          className="group-title"
         >
-          <Icon name="dropdown" />
-          {`${group.name}`}
+          <Image src={group.logo} height={'100%'} className="group-logo" />
         </Accordion.Title>
         <Accordion.Content active={activeIndex === index}>
           {this.renderTestlist(groupedTests[group.name])}

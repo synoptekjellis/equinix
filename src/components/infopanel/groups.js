@@ -4,7 +4,7 @@ import {
   AZURE_ICON,
   AZURE_LOGO,
   CLIENT_ICON,
-  CLIENT_LOGO,
+  CLIENT_LOGO_MENU,
   GOOGLE_ICON,
   GOOGLE_LOGO,
   ORACLE_ICON,
@@ -15,7 +15,7 @@ const groups = [
   {
     id: 'svc_location',
     name: 'SVC Location',
-    logo: CLIENT_LOGO,
+    logo: CLIENT_LOGO_MENU,
     icon: CLIENT_ICON
   },
   {

@@ -49,3 +49,32 @@
 .infopanel .accordion .content.active {
   padding: 0 0 0 20px;
 }
+
+.infopanel .title .group-logo {
+  opacity: 0.7;
+}
+
+.infopanel .title:hover .group-logo {
+  opacity: 1;
+}
+
+.group-title {
+  height: 80px;
+}
+
+.infopanel .ui.styled.accordion .title.group-title {
+  background-color: rgba(220, 220, 220, 0);
+  transition: background-color 0.2s ease-in;
+}
+
+.infopanel .ui.styled.accordion .title.active.group-title {
+  background-color: rgba(220, 220, 220, 0.9);
+}
+
+.infopanel .title.active .group-logo {
+  opacity: 1;
+}
+
+.infopanel .ui.styled.accordion {
+  background-color: rgba(255, 255, 255, 0.8);
+}
