@@ -46,8 +46,12 @@
   flex-direction: row;
 }
 
+.infopanel .accordion .content {
+  padding: 0 0 0 0px;
+}
+
 .infopanel .accordion .content.active {
-  padding: 0 0 0 20px;
+  padding: 0 0 0 35px;
 }
 
 .infopanel .title .group-logo {
@@ -59,16 +63,14 @@
 }
 
 .group-title {
-  height: 80px;
+  height: 60px;
 }
 
 .infopanel .ui.styled.accordion .title.group-title {
-  background-color: rgba(220, 220, 220, 0);
   transition: background-color 0.2s ease-in;
 }
 
 .infopanel .ui.styled.accordion .title.active.group-title {
-  background-color: rgba(220, 220, 220, 0.9);
 }
 
 .infopanel .title.active .group-logo {

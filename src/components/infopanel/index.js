@@ -3,7 +3,15 @@ import './index.css';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Accordion, Button, Icon, Image, Label, List } from 'semantic-ui-react';
+import {
+  Accordion,
+  Button,
+  Icon,
+  Image,
+  Label,
+  List,
+  Transition
+} from 'semantic-ui-react';
 
 import groups from './groups';
 
@@ -76,11 +84,15 @@ export default class InfoPanel extends Component {
     const { active } = this.props;
     const { activeIndex } = this.state;
     const groupedTests = _.groupBy(active.tests, 'type');
+    const animation = 'fade right';
+    const duration = 750;
+
+    const isActive = activeIndex === index;
 
     return (
       <div key={`infopanel-accordionpanel-${group.id}`}>
         <Accordion.Title
-          active={activeIndex === index}
+          active={isActive}
           index={index}
           onClick={this.handleClick}
           className="group-title"
@@ -88,7 +100,13 @@ export default class InfoPanel extends Component {
           <Image src={group.logo} height={'100%'} className="group-logo" />
         </Accordion.Title>
         <Accordion.Content active={activeIndex === index}>
-          {this.renderTestlist(groupedTests[group.name])}
+          <Transition
+            animation={animation}
+            duration={duration}
+            visible={isActive}
+          >
+            {this.renderTestlist(groupedTests[group.name])}
+          </Transition>
         </Accordion.Content>
       </div>
     );
