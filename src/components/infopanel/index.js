@@ -121,19 +121,24 @@ export default class InfoPanel extends Component {
   };
 
   render() {
-    const { height, width, active } = this.props;
-
+    const { height, width, active, visible } = this.props;
+    const animation = 'fade right';
+    const duration = 750;
     console.log(active.tests);
 
-    return (
-      <div className="infopanel-frame">
-        <div
-          className="infopanel"
-          style={{ height: `${height}px`, width: `${width}px` }}
-        >
-          {this.renderTestGroups(groups)}
-        </div>
+    const contents = (
+      <div
+        className="infopanel"
+        style={{ height: `${height}px`, width: `${width}px` }}
+      >
+        {this.renderTestGroups(groups)}
       </div>
+    );
+
+    return (
+      <Transition animation={animation} duration={duration} visible={visible}>
+        <div className="infopanel-frame">{contents}</div>
+      </Transition>
     );
   }
 }

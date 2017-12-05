@@ -4,6 +4,7 @@ import { geoMercator, geoPath } from 'd3-geo';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Transition } from 'semantic-ui-react';
 import { feature } from 'topojson-client';
 
 import agents from '../api/agents';
@@ -150,9 +151,14 @@ class App extends Component {
 
     const filteredLocations = this.state.agents;
 
-    const height = 600;
+    const height = 700;
     const width = 1280;
     const panelWidth = width * 0.25;
+
+    const animation = 'fade right';
+    const duration = 750;
+
+    const hasActiveAgent = !!active.id;
 
     return (
       <div className="app">
@@ -183,16 +189,17 @@ class App extends Component {
             clearActive={this.clearActive}
           />
         </div>
-        {active.id ? (
-          <InfoPanel
-            height={height}
-            width={panelWidth}
-            active={active}
-            activeTest={activeTest}
-            setActiveTest={this.setActiveTest}
-            clearActiveTest={this.clearActiveTest}
-          />
-        ) : null}
+
+        <InfoPanel
+          height={height}
+          width={panelWidth}
+          active={active}
+          activeTest={activeTest}
+          visible={hasActiveAgent}
+          setActiveTest={this.setActiveTest}
+          clearActiveTest={this.clearActiveTest}
+        />
+
         <ClientLogo
           clearActive={this.clearActive}
           clearActiveTest={this.clearActiveTest}

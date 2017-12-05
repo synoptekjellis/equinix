@@ -1,4 +1,4 @@
-import './fade.css';
+import './index.css';
 
 import * as d3 from 'd3';
 import { zoom } from 'd3/node_modules/d3-zoom';
@@ -8,19 +8,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { bbox, feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
-
-const Fade = ({ children, ...props }) => (
-  <CSSTransition
-    {...props}
-    timeout={{
-      enter: 2000,
-      exit: 3000
-    }}
-    classNames="fade"
-  >
-    {children}
-  </CSSTransition>
-);
 
 class WorldMap extends Component {
   constructor(props) {
@@ -99,7 +86,7 @@ class WorldMap extends Component {
     const isActive = active.id === point.id;
     const isHovering = hovering.id === point.id;
 
-    let r = isAgent ? 1.5 : 0.75;
+    let r = isAgent ? 2.5 : 1.5;
     const basicFill = isAgent ? '#f44336' : '#D32f2f';
     const activeFill = isAgent ? '#ff0000' : '#D32f2f';
     const fill = isActive ? activeFill : basicFill;
@@ -107,6 +94,8 @@ class WorldMap extends Component {
     if (isHovering) {
       r = r * 2;
     }
+
+    r = r / (this.state.zoomTransform.k || 1);
 
     let opacity = active.id && isAgent ? 0.4 : 0.9;
     if (active && isActive) {
@@ -181,7 +170,7 @@ class WorldMap extends Component {
       const x2 = this.projection()(latlong2)[0];
       const y2 = this.projection()(latlong2)[1];
 
-      let strokeWidth = 0.25;
+      let strokeWidth = 0.3;
       const fill = '#D32f2f';
 
       let opacity = 0.9;
@@ -192,9 +181,11 @@ class WorldMap extends Component {
 
       if (activeTest && activeTest.id === test.id) {
         opacity = 1;
-        strokeWidth = 0.75;
+        strokeWidth = 1;
         ref = 'activetest';
       }
+
+      strokeWidth = strokeWidth / this.currentScale;
 
       return (
         <line
@@ -216,7 +207,7 @@ class WorldMap extends Component {
     const fill = `rgba(60,70,70,${0.7 / this.state.worldData.length * i})`;
     const path = d3.geoPath().projection(this.projection())(d);
     const stroke = '#111';
-    const strokeWidth = 0.15;
+    const strokeWidth = 0.5 / this.currentScale;
 
     return (
       <path
@@ -298,8 +289,6 @@ class WorldMap extends Component {
         zoomTo = maxZoom;
       }
 
-      console.log(zoomTo);
-
       let scaler = zoomTo / this.currentScale;
 
       let halfWidth = scaler * bboxMap.width * 0.5;
@@ -325,6 +314,7 @@ class WorldMap extends Component {
         deltaY = deltaY - halfBoxHeight;
       }
 
+      this.currentScale = zoomTo;
       d3
         .select(this.refs.svg)
         .transition()
@@ -333,17 +323,15 @@ class WorldMap extends Component {
           this.zoom.transform,
           d3.zoomIdentity.translate(deltaX, deltaY).scale(zoomTo)
         );
-      this.currentScale = zoomTo;
     }
 
     if (needToZoomToMap) {
+      this.currentScale = 1;
       d3
         .select(this.refs.svg)
         .transition()
         .duration(speed)
         .call(this.zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
-
-      this.currentScale = 1;
     }
   };
 
