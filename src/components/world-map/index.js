@@ -9,6 +9,14 @@ import { bbox, feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
 
+const COUNTRY_STROKE_WIDTH = 0.25;
+const ZOOM_TRANSITION_SPEED = 750;
+const MAX_ZOOM_LEVEL = 25;
+const LINE_STROKE_WIDTH = 0.25;
+const LINE_STROKE_WIDTH_ACTIVE = 1.75;
+const AGENT_MARKER_RADIUS = 3.5;
+const TEST_MARKER_RADIUS = 2;
+
 class WorldMap extends Component {
   constructor(props) {
     super();
@@ -86,7 +94,7 @@ class WorldMap extends Component {
     const isActive = active.id === point.id;
     const isHovering = hovering.id === point.id;
 
-    let r = isAgent ? 2.5 : 1.5;
+    let r = isAgent ? AGENT_MARKER_RADIUS : TEST_MARKER_RADIUS;
     const basicFill = isAgent ? '#f44336' : '#D32f2f';
     const activeFill = isAgent ? '#ff0000' : '#D32f2f';
     const fill = isActive ? activeFill : basicFill;
@@ -170,7 +178,7 @@ class WorldMap extends Component {
       const x2 = this.projection()(latlong2)[0];
       const y2 = this.projection()(latlong2)[1];
 
-      let strokeWidth = 0.3;
+      let strokeWidth = LINE_STROKE_WIDTH;
       const fill = '#D32f2f';
 
       let opacity = 0.9;
@@ -181,11 +189,11 @@ class WorldMap extends Component {
 
       if (activeTest && activeTest.id === test.id) {
         opacity = 1;
-        strokeWidth = 1;
+        strokeWidth = LINE_STROKE_WIDTH_ACTIVE;
         ref = 'activetest';
       }
 
-      strokeWidth = strokeWidth / this.currentScale;
+      strokeWidth = strokeWidth / (this.state.zoomTransform.k || 1);
 
       return (
         <line
@@ -207,7 +215,8 @@ class WorldMap extends Component {
     const fill = `rgba(60,70,70,${0.7 / this.state.worldData.length * i})`;
     const path = d3.geoPath().projection(this.projection())(d);
     const stroke = '#111';
-    const strokeWidth = 0.5 / this.currentScale;
+    const strokeWidth =
+      COUNTRY_STROKE_WIDTH / (this.state.zoomTransform.k || 1);
 
     return (
       <path
@@ -239,7 +248,7 @@ class WorldMap extends Component {
   doZoom = () => {
     const { active, activeTest } = this.props;
     const { zoomedTo } = this.state;
-    const maxZoom = 25;
+    const maxZoom = MAX_ZOOM_LEVEL;
 
     if (this.state.zooming) {
       return;
@@ -250,7 +259,9 @@ class WorldMap extends Component {
     const needToZoomToLine = activeTest.id && zoomedTo !== activeTest.id;
     const needToZoomToMap = !active.id && zoomedTo !== 'map';
 
-    const speed = needToZoomToLine ? 600 : 800;
+    const speed = needToZoomToLine
+      ? ZOOM_TRANSITION_SPEED * 0.6
+      : ZOOM_TRANSITION_SPEED;
 
     if (needToZoomToLines || needToZoomToLine) {
       let bboxMap = this.refs.svg.getBoundingClientRect();
