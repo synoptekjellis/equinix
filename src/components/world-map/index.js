@@ -371,7 +371,9 @@ class WorldMap extends Component {
           left: `${hoverAt.pageX - 18}px`
         }}
       >
-        {`${hovering.name}, ${hovering.country} ${hovering.region}`}
+        {hovering.isAgent
+          ? `${hovering.name}, ${hovering.country} ${hovering.region}`
+          : `${hovering.fullName || hovering.name} `}
       </div>
     ) : (
       <div
