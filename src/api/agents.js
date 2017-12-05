@@ -5,12 +5,12 @@ const agents = [
     longitude: -84.387874,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'South Atlantic',
     notes: '',
     name: 'AT1',
     isAgent: true,
-    id: 10000
+    id: 0
   },
   {
     address: '1905 Lunt Avenue Elk Grove, IL 60007',
@@ -18,8 +18,8 @@ const agents = [
     longitude: -87.954882,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'East North Central',
     notes: '',
     name: 'CH3',
     isAgent: true,
@@ -31,12 +31,12 @@ const agents = [
     longitude: -96.81919,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'West South Central',
     notes: '',
     name: 'DA6',
     isAgent: true,
-    id: 10002
+    id: 2
   },
   {
     address: '21721 Filigree Court Ashburn, VA 20147',
@@ -44,12 +44,12 @@ const agents = [
     longitude: -77.45861,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'South Atlantic',
     notes: '',
     name: 'DC6',
     isAgent: true,
-    id: 10003
+    id: 3
   },
   {
     address: '1920 East Maple Avenue El Segundo, CA 90245',
@@ -57,8 +57,8 @@ const agents = [
     longitude: -118.394061,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'Pacific',
     notes: '',
     name: 'LA3',
     isAgent: true,
@@ -70,12 +70,12 @@ const agents = [
     longitude: -74.071541,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'Middle Atlantic',
     notes: '',
     name: 'NY5',
     isAgent: true,
-    id: 10005
+    id: 5
   },
   {
     address: '2020 Fifth Avenue Seattle, WA 98121',
@@ -83,12 +83,12 @@ const agents = [
     longitude: -122.339749,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'Pacific',
     notes: '',
     name: 'SE3',
     isAgent: true,
-    id: 10006
+    id: 6
   },
   {
     address: '9 Great Oaks Boulevard San Jose, CA 95119',
@@ -96,12 +96,12 @@ const agents = [
     longitude: -121.781706,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'US',
+    region: 'Pacific',
     notes: '',
     name: 'SV5',
     isAgent: true,
-    id: 10007
+    id: 7
   },
   {
     address: 'Science Park 610 1098 XH Amsterdam Netherlands',
@@ -109,12 +109,12 @@ const agents = [
     longitude: 4.96096,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'NL',
+    region: 'Northern Europe',
     notes: '',
     name: 'AM3',
     isAgent: true,
-    id: 10008
+    id: 8
   },
   {
     address: 'Lärchenstrasse 110 Frankfurt 65933 Germany',
@@ -122,12 +122,12 @@ const agents = [
     longitude: 8.587964,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'DE',
+    region: 'Western Europe',
     notes: '',
     name: 'FR4',
     isAgent: true,
-    id: 10009
+    id: 9
   },
   {
     address:
@@ -136,12 +136,12 @@ const agents = [
     longitude: -0.62975,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'UK',
+    region: 'Northern Europe',
     notes: '',
     name: 'LD5',
     isAgent: true,
-    id: 10010
+    id: 10
   },
   {
     address:
@@ -150,12 +150,12 @@ const agents = [
     longitude: 114.119078,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'CH',
+    region: 'East Asia',
     notes: '',
     name: 'HK2',
     isAgent: true,
-    id: 10011
+    id: 11
   },
   {
     address:
@@ -164,12 +164,12 @@ const agents = [
     longitude: 135.495551,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'JP',
+    region: 'East Asia',
     notes: '',
     name: 'OS1',
     isAgent: true,
-    id: 10012
+    id: 12
   },
   {
     address: '15 Pioneer Walk, Singapore 627753',
@@ -177,12 +177,12 @@ const agents = [
     longitude: 103.695359,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'SG',
+    region: 'South East Asia',
     notes: '',
     name: 'SG2',
     isAgent: true,
-    id: 10013
+    id: 13
   },
   {
     address: '200 Bourke Road, Alexandria, Sydney NSW 2015 Australia',
@@ -190,12 +190,12 @@ const agents = [
     longitude: 151.189364,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'AU',
+    region: 'Australia',
     notes: '',
     name: 'SY4',
     isAgent: true,
-    id: 10014
+    id: 14
   },
   {
     address:
@@ -204,12 +204,12 @@ const agents = [
     longitude: 139.76577,
     type: 'SVC Location',
     city_state: null,
-    country: null,
-    region: null,
+    country: 'JP',
+    region: 'East Asia',
     notes: '',
     name: 'TY4',
     isAgent: true,
-    id: 10015
+    id: 15
   }
 ];
 

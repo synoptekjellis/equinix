@@ -42,6 +42,18 @@ class DataReadout extends Component {
         templ: 'address'
       },
       {
+        id: 'country',
+        label: 'Country',
+        templ: 'country',
+        minWidth: 100
+      },
+      {
+        id: 'region',
+        label: 'Region',
+        templ: 'region',
+        minWidth: 100
+      },
+      {
         id: 'latitude',
         label: 'Latitude',
         templ: 'latitude',
@@ -80,7 +92,7 @@ class DataReadout extends Component {
           key={`table-headercell-${cm.id}`}
           sorted={sortedBy ? direction : null}
           style={{
-            'min-width': cm.minWidth || 'auto'
+            minWidth: cm.minWidth || 'auto'
           }}
           onClick={() => {
             this.setState({
@@ -116,6 +128,8 @@ class DataReadout extends Component {
     if (!sortAsc) {
       sortedLocations = _.reverse(sortedLocations);
     }
+
+    console.log(sortedLocations);
 
     let mapped = _.map(sortedLocations, this.locationToHtml);
     return mapped;
