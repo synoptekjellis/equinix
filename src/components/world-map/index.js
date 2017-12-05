@@ -5,6 +5,7 @@ import { zoom } from 'd3/node_modules/d3-zoom';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Transition } from 'semantic-ui-react';
 import { bbox, feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
@@ -23,6 +24,7 @@ class WorldMap extends Component {
     this.state = {
       worldData: [],
       hovering: {},
+      hoverAt: null,
       zooming: false,
       zoomedTo: 'map',
       currentScale: 1,
@@ -72,7 +74,7 @@ class WorldMap extends Component {
 
   pointToMarkerHtml = (point, index) => {
     const { active, setActive, clearActive } = this.props;
-    const { hovering } = this.state;
+    const { hovering, hoverAt } = this.state;
 
     const {
       latitude,
@@ -121,15 +123,21 @@ class WorldMap extends Component {
         fill={fill}
         ref={activeRef}
         opacity={opacity}
+        title={name}
         className="marker"
         onMouseEnter={event => {
           this.setState({
-            hovering: point
+            hovering: point,
+            hoverAt: {
+              pageX: event.pageX,
+              pageY: event.pageY
+            }
           });
         }}
         onMouseLeave={event => {
           this.setState({
-            hovering: {}
+            hovering: {},
+            hoverAt: null
           });
         }}
         onClick={event => {
@@ -353,30 +361,55 @@ class WorldMap extends Component {
 
   render() {
     const { width, height } = this.props;
-    const { zoomTransform, zoomScale } = this.state;
-
+    const { zoomTransform, zoomScale, hovering, hoverAt } = this.state;
+    let tip = hovering.id ? (
+      <div
+        className={`ui bottom left popup`}
+        style={{
+          position: 'absolute',
+          top: `${hoverAt.pageY + 12}px`,
+          left: `${hoverAt.pageX - 18}px`
+        }}
+      >
+        {`${hovering.name}, ${hovering.country} ${hovering.region}`}
+      </div>
+    ) : (
+      <div
+        className={``}
+        style={{
+          position: 'absolute',
+          top: `${0}px`,
+          left: `${0}px`
+        }}
+      />
+    );
     return (
-      <svg
-        ref="svg"
-        width={width}
-        height={height}
-        viewBox={`
+      <div>
+        <svg
+          ref="svg"
+          width={width}
+          height={height}
+          viewBox={`
           ${width * 0.058} 
           ${height * 0.25} 
           ${width * 0.44} 
           ${height * 0.025}`}
-        className="map-root"
-        transform={`${zoomTransform}`}
-      >
-        <g className="countries">{this.generateCountries()}</g>
-        <g ref="testlines" className="test-lines">
-          {this.generateTestLines()}
-        </g>
-        <g ref="tests" className="test-markers">
-          {this.generateTestMarkers()}
-        </g>
-        <g className="agent-markers">{this.generateAgentMarkers()}</g>
-      </svg>
+          className="map-root"
+          transform={`${zoomTransform}`}
+        >
+          <g className="countries">{this.generateCountries()}</g>
+          <g ref="testlines" className="test-lines">
+            {this.generateTestLines()}
+          </g>
+          <g ref="tests" className="test-markers">
+            {this.generateTestMarkers()}
+          </g>
+          <g className="agent-markers">{this.generateAgentMarkers()}</g>
+        </svg>
+        <Transition animation={'fade'} duration={250} visible={!!hovering.id}>
+          {tip}
+        </Transition>
+      </div>
     );
   }
 }
