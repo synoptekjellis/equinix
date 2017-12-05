@@ -25,14 +25,16 @@ class DataReadout extends Component {
       {
         id: 'name',
         label: 'Name',
-        templ: 'name'
+        templ: 'name',
+        minWidth: 70
       },
       {
         id: 'tests',
         label: '# of Tests',
         templ: (row, col) => {
           return row.tests.length;
-        }
+        },
+        minWidth: 100
       },
       {
         id: 'address',
@@ -42,12 +44,14 @@ class DataReadout extends Component {
       {
         id: 'latitude',
         label: 'Latitude',
-        templ: 'latitude'
+        templ: 'latitude',
+        minWidth: 105
       },
       {
         id: 'longitude',
         label: 'Longitude',
-        templ: 'longitude'
+        templ: 'longitude',
+        minWidth: 105
       }
 
       // {
@@ -75,6 +79,9 @@ class DataReadout extends Component {
         <Table.HeaderCell
           key={`table-headercell-${cm.id}`}
           sorted={sortedBy ? direction : null}
+          style={{
+            'min-width': cm.minWidth || 'auto'
+          }}
           onClick={() => {
             this.setState({
               sortBy: cm,
