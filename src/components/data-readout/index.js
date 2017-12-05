@@ -5,18 +5,34 @@ import React, { Component } from 'react';
 import { Icon, Input, Label, Menu, Table } from 'semantic-ui-react';
 
 class DataReadout extends Component {
+  state = {
+    sortBy: {
+      id: 'name',
+      label: 'Name',
+      templ: 'name'
+    },
+    sortAsc: true
+  };
+
   //Data
   columnModel = () => {
     return [
-      {
-        id: 'id',
-        label: 'ID',
-        templ: 'id'
-      },
+      // {
+      //   id: 'id',
+      //   label: 'ID',
+      //   templ: 'id'
+      // },
       {
         id: 'name',
         label: 'Name',
         templ: 'name'
+      },
+      {
+        id: 'tests',
+        label: '# of Tests',
+        templ: (row, col) => {
+          return row.tests.length;
+        }
       },
       {
         id: 'address',
@@ -33,22 +49,46 @@ class DataReadout extends Component {
         label: 'Longitude',
         templ: 'longitude'
       }
+
+      // {
+      //   id: 'notes',
+      //   label: 'Notes',
+      //   templ: 'notes'
+      // }
     ];
   };
 
   //Head
   renderHead = () => {
+    const { sortBy, sortAsc } = this.state;
+
     function columnToHeaderCell(cm) {
+      let sortedBy = false;
+      if (sortBy.id === cm.id) {
+        sortedBy = true;
+      }
+
+      const label = sortedBy ? <b>{cm.label}</b> : cm.label;
       return (
-        <Table.HeaderCell key={`table-headercell-${cm.id}`}>
-          {cm.label}
+        <Table.HeaderCell
+          key={`table-headercell-${cm.id}`}
+          onClick={() => {
+            this.setState({
+              sortBy: cm,
+              sortAsc: sortBy.id === cm.id ? !sortAsc : true
+            });
+          }}
+        >
+          {label}
         </Table.HeaderCell>
       );
     }
 
     return (
       <Table.Header>
-        <Table.Row>{_.map(this.columnModel(), columnToHeaderCell)}</Table.Row>
+        <Table.Row>
+          {_.map(this.columnModel(), columnToHeaderCell.bind(this))}
+        </Table.Row>
       </Table.Header>
     );
   };
@@ -59,14 +99,33 @@ class DataReadout extends Component {
   };
   renderRows = () => {
     const { locations } = this.props;
-    return _.map(locations, this.locationToHtml);
+    const { sortBy, sortAsc } = this.state;
+
+    let sortedLocations = _.sortBy(locations, sortBy.templ);
+
+    if (!sortAsc) {
+      sortedLocations = _.reverse(sortedLocations);
+    }
+
+    let mapped = _.map(sortedLocations, this.locationToHtml);
+    return mapped;
   };
   locationToHtml = location => {
     const { active, setActive, clearActive } = this.props;
+
     function columnToCell(cm) {
+      let content = '';
+      if (_.isString(cm.templ)) {
+        content = location[cm.templ];
+      }
+
+      if (_.isFunction(cm.templ)) {
+        content = cm.templ(location, cm);
+      }
+
       return (
         <Table.Cell key={`table-row-${location.id}-cell-${cm.id}`}>
-          {location[cm.templ]}
+          {content}
         </Table.Cell>
       );
     }
