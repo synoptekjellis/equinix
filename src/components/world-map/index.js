@@ -49,7 +49,7 @@ class WorldMap extends Component {
   }
 
   zoomed = () => {
-    //console.log('.');
+    //console.log(d3.event.transform);
 
     this.setState({
       zoomTransform: d3.event.transform
@@ -255,9 +255,9 @@ class WorldMap extends Component {
     }
 
     const needToZoomToLines =
-      !activeTest.id && active.id && zoomedTo != active.id;
-    const needToZoomToLine = activeTest.id && zoomedTo != activeTest.id;
-    const needToZoomToMap = !active.id && zoomedTo != 'map';
+      !activeTest.id && active.id && zoomedTo !== active.id;
+    const needToZoomToLine = activeTest.id && zoomedTo !== activeTest.id;
+    const needToZoomToMap = !active.id && zoomedTo !== 'map';
 
     const speed = needToZoomToLine ? 600 : 800;
 
@@ -268,16 +268,23 @@ class WorldMap extends Component {
         ? this.refs.activetest.getBoundingClientRect()
         : this.refs.testlines.getBoundingClientRect();
 
+      console.log(bboxLines);
+
       let bboxActive = this.refs.active
         ? this.refs.active.getBoundingClientRect()
         : {};
 
       let hasLines = bboxLines.width > 0;
       let bboxFrame = hasLines ? bboxLines : bboxActive;
-      let zoomTo = hasLines ? bboxMap.width / bboxLines.width * 0.5 : 3;
+      let boxFramePorportion = bboxMap.width / bboxLines.width;
+
+      console.log(boxFramePorportion, bboxMap.width, bboxLines.width);
+
+      let zoomTo = hasLines ? boxFramePorportion * 0.5 : 3;
 
       if (hasLines && bboxLines.height > bboxLines.width) {
-        zoomTo = bboxMap.height / bboxLines.height * 0.5;
+        let porportion = bboxMap.height / bboxLines.height;
+        zoomTo = porportion * 0.5;
       }
 
       if (hasLines && activeTest.id) {
@@ -290,6 +297,8 @@ class WorldMap extends Component {
       if (zoomTo > maxZoom) {
         zoomTo = maxZoom;
       }
+
+      console.log(zoomTo);
 
       let scaler = zoomTo / this.currentScale;
 
