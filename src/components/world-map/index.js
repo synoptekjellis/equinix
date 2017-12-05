@@ -100,7 +100,7 @@ class WorldMap extends Component {
     const fill = isActive ? activeFill : basicFill;
 
     if (isHovering) {
-      r = r * 2;
+      r = r * 1.5;
     }
 
     r = r / (this.state.zoomTransform.k || 1);
