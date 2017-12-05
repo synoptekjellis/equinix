@@ -68,10 +68,13 @@ class DataReadout extends Component {
         sortedBy = true;
       }
 
-      const label = sortedBy ? <b>{cm.label}</b> : cm.label;
+      let direction = sortAsc ? 'ascending' : 'descending';
+
+      const label = cm.label;
       return (
         <Table.HeaderCell
           key={`table-headercell-${cm.id}`}
+          sorted={sortedBy ? direction : null}
           onClick={() => {
             this.setState({
               sortBy: cm,
@@ -168,7 +171,7 @@ class DataReadout extends Component {
           />
         </div> */}
         <div className="data-table">
-          <Table celled selectable>
+          <Table celled selectable sortable>
             {this.renderHead()}
             {this.renderBody()}
           </Table>
