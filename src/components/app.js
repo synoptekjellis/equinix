@@ -151,8 +151,8 @@ class App extends Component {
 
     const filteredLocations = this.state.agents;
 
-    const height = 700;
-    const width = 1280;
+    const height = 800;
+    const width = 1440;
     const panelWidth = width * 0.25;
 
     const animation = 'fade right';

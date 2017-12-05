@@ -361,10 +361,10 @@ class WorldMap extends Component {
         width={width}
         height={height}
         viewBox={`
-          ${width * 0.0725} 
-          ${height * 0.2} 
-          ${width * 0.475} 
-          ${height * 0.2}`}
+          ${width * 0.058} 
+          ${height * 0.25} 
+          ${width * 0.44} 
+          ${height * 0.025}`}
         className="map-root"
         transform={`${zoomTransform}`}
       >
