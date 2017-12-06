@@ -99,7 +99,7 @@ class DataReadout extends Component {
     var activeRow = this.refs['active-data-readout-listitem'];
     if (activeRow) {
       ReactDOM.findDOMNode(activeRow).scrollIntoView({
-        block: 'end',
+        block: 'center',
         behavior: 'smooth'
       });
     }
