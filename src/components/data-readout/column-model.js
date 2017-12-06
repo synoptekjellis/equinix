@@ -35,19 +35,19 @@ export default () => {
       label: 'Region',
       templ: 'region',
       minWidth: 100
-    },
-    {
-      id: 'latitude',
-      label: 'Latitude',
-      templ: 'latitude',
-      minWidth: 105
-    },
-    {
-      id: 'longitude',
-      label: 'Longitude',
-      templ: 'longitude',
-      minWidth: 105
     }
+    // {
+    //   id: 'latitude',
+    //   label: 'Latitude',
+    //   templ: 'latitude',
+    //   minWidth: 105
+    // },
+    // {
+    //   id: 'longitude',
+    //   label: 'Longitude',
+    //   templ: 'longitude',
+    //   minWidth: 105
+    // }
 
     // {
     //   id: 'notes',

@@ -390,7 +390,7 @@ class WorldMap extends Component {
         }}
       >
         {hovering.isAgent
-          ? `${hovering.name}, ${hovering.country} ${hovering.region}`
+          ? `${hovering.name}`
           : `${hovering.fullName || hovering.name} `}
       </div>
     ) : (
