@@ -151,14 +151,19 @@ class WorldMap extends Component {
         onClick={event => {
           if (isAgent) {
             if (isActive) {
+              console.log('clear-active', point);
               clearActive();
             } else {
+              console.log('set-active', point);
               setActive(point);
             }
           } else {
             if (isActiveTest) {
+              console.log('clear-active-test', point);
               clearActiveTest();
             } else {
+              console.log('set-active-test', point);
+
               setActiveTest(point);
             }
           }

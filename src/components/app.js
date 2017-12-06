@@ -12,10 +12,15 @@ import agent46499 from '../api/agents-46499';
 import agent47477 from '../api/agents-47477';
 import datacenterLocations from '../api/datacenter-locations';
 import tests from '../api/tests';
-import { updateActive, updateActiveTest } from '../state/actions/map';
+import {
+  updateActive,
+  updateActiveTest,
+  updateInfoPanelIndex
+} from '../state/actions/map';
 import ClientLogo from './client-logo';
 import DataReadout from './data-readout';
 import InfoPanel from './infopanel';
+import groups from './infopanel/groups';
 import WorldMap from './world-map';
 
 function stateToComponent(state) {
@@ -139,6 +144,10 @@ class App extends Component {
   setActiveTest = test => {
     const { dispatch } = this.props;
     dispatch(updateActiveTest(test));
+    var newIndex = _.findIndex(groups, group => {
+      return group.name === test.type;
+    });
+    this.openInfoPanel(newIndex);
   };
 
   clearActiveTest = test => {
@@ -146,8 +155,13 @@ class App extends Component {
     dispatch(updateActiveTest({}));
   };
 
+  openInfoPanel = index => {
+    const { dispatch } = this.props;
+    dispatch(updateInfoPanelIndex(index));
+  };
+
   render() {
-    const { active, activeTest } = this.props.map;
+    const { active, activeTest, activeInfoPanelIndex } = this.props.map;
 
     const filteredLocations = this.state.agents;
 
@@ -198,6 +212,8 @@ class App extends Component {
           visible={hasActiveAgent}
           setActiveTest={this.setActiveTest}
           clearActiveTest={this.clearActiveTest}
+          activeInfoPanelIndex={activeInfoPanelIndex}
+          openInfoPanel={this.openInfoPanel}
         />
 
         <ClientLogo

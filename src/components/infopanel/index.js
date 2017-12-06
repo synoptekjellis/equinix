@@ -16,9 +16,7 @@ import {
 import groups from './groups';
 
 export default class InfoPanel extends Component {
-  state = {
-    activeIndex: -1
-  };
+  state = {};
 
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
@@ -73,21 +71,21 @@ export default class InfoPanel extends Component {
   };
 
   handleClick = (e, titleProps) => {
+    const { openInfoPanel, activeInfoPanelIndex } = this.props;
     const { index } = titleProps;
-    const { activeIndex } = this.state;
-    const newIndex = activeIndex === index ? -1 : index;
+    const newIndex = activeInfoPanelIndex === index ? -1 : index;
 
-    this.setState({ activeIndex: newIndex });
+    openInfoPanel(newIndex);
   };
 
   groupToPanelHtml = (group, index) => {
-    const { active } = this.props;
-    const { activeIndex } = this.state;
+    const { active, activeInfoPanelIndex } = this.props;
+
     const groupedTests = _.groupBy(active.tests, 'type');
     const animation = 'fade right';
     const duration = 750;
 
-    const isActive = activeIndex === index;
+    const isActive = activeInfoPanelIndex === index;
 
     return (
       <div key={`infopanel-accordionpanel-${group.id}`}>
@@ -99,7 +97,7 @@ export default class InfoPanel extends Component {
         >
           <Image src={group.logo} height={'100%'} className="group-logo" />
         </Accordion.Title>
-        <Accordion.Content active={activeIndex === index}>
+        <Accordion.Content active={isActive}>
           <Transition
             animation={animation}
             duration={duration}

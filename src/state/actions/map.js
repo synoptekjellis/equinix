@@ -11,3 +11,10 @@ export function updateActiveTest(value) {
     value: value
   };
 }
+
+export function updateInfoPanelIndex(value) {
+  return {
+    type: 'UPDATE_INFO_PANEL_INDEX',
+    value: value
+  };
+}
