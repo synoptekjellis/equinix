@@ -19,7 +19,7 @@ export default class InfoPanel extends Component {
 
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
-    const color = 'teal';
+    const color = 'red';
     const size = 'big';
     const isActive = test.id === activeTest.id;
     const thisGroup = _.find(groups, g => {
@@ -137,7 +137,6 @@ export default class InfoPanel extends Component {
     const { height, width, active, visible } = this.props;
     const animation = 'fade right';
     const duration = 750;
-    console.log(active.tests);
 
     const contents = (
       <div
