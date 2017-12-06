@@ -73,7 +73,14 @@ class WorldMap extends Component {
   };
 
   pointToMarkerHtml = (point, index) => {
-    const { active, setActive, clearActive } = this.props;
+    const {
+      active,
+      activeTest,
+      setActive,
+      setActiveTest,
+      clearActive,
+      clearActiveTest
+    } = this.props;
     const { hovering, hoverAt } = this.state;
 
     const {
@@ -94,6 +101,7 @@ class WorldMap extends Component {
     const y = this.projection()(latlong)[1];
 
     const isActive = active.id === point.id;
+    const isActiveTest = activeTest.id === point.id;
     const isHovering = hovering.id === point.id;
 
     let r = isAgent ? AGENT_MARKER_RADIUS : TEST_MARKER_RADIUS;
@@ -141,10 +149,18 @@ class WorldMap extends Component {
           });
         }}
         onClick={event => {
-          if (isActive) {
-            clearActive();
+          if (isAgent) {
+            if (isActive) {
+              clearActive();
+            } else {
+              setActive(point);
+            }
           } else {
-            setActive(point);
+            if (isActiveTest) {
+              clearActiveTest();
+            } else {
+              setActiveTest(point);
+            }
           }
         }}
       />
