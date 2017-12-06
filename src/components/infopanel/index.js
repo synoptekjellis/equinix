@@ -136,7 +136,7 @@ export default class InfoPanel extends Component {
         style={{ height: `${height}px`, width: `${width}px` }}
       >
         <div className="infopanel-header">
-          <Header size="large">Tests</Header>
+          <Header size="large">Average Latency</Header>
         </div>
         <div className="infopanel-groups">{this.renderTestGroups(groups)}</div>
       </div>
