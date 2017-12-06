@@ -3,7 +3,16 @@ import './index.css';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon, Input, Label, Menu, Table } from 'semantic-ui-react';
+import {
+  Dimmer,
+  Icon,
+  Input,
+  Label,
+  Loader,
+  Menu,
+  Segment,
+  Table
+} from 'semantic-ui-react';
 
 import columnModel from './column-model';
 import DataReadoutListItem from './listitem';
@@ -111,17 +120,27 @@ class DataReadout extends Component {
   }
 
   render() {
+    const { loading } = this.props;
+
+    if (loading) {
+      return (
+        <div className="data-readout">
+          <div className="data-table">
+            <Segment className="loader-frame">
+              <Table celled selectable sortable>
+                {this.renderHead()}
+              </Table>
+              <Dimmer active inverted>
+                <Loader size="large">Getting Agents</Loader>
+              </Dimmer>
+            </Segment>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="data-readout">
-        {/* <div className="filter-frame">
-          <Input
-            fluid
-            icon="search"
-            placeholder="Search..."
-            className="filter"
-            size="big"
-          />
-        </div> */}
         <div className="data-table">
           <Table celled selectable sortable>
             {this.renderHead()}

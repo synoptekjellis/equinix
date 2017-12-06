@@ -1,5 +1,5 @@
-const BASE_URL =
-  'https://cors-anywhere.herokuapp.com/https://api.thousandeyes.com';
+const CORS_PROXY = ``;
+const BASE_URL = `${CORS_PROXY}https://api.thousandeyes.com`;
 const api = `${BASE_URL}/v6`;
 const apiToken = '29bc9c84-0bac-4e39-80f3-79d896073113';
 const routes = {

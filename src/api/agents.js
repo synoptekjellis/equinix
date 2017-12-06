@@ -10,7 +10,8 @@ const agents = [
     notes: '',
     name: 'AT1',
     isAgent: true,
-    id: 1
+    id: 1,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '1905 Lunt Avenue Elk Grove, IL 60007',
@@ -36,7 +37,8 @@ const agents = [
     notes: '',
     name: 'DA6',
     isAgent: true,
-    id: 2
+    id: 2,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '21721 Filigree Court Ashburn, VA 20147',
@@ -49,7 +51,8 @@ const agents = [
     notes: '',
     name: 'DC6',
     isAgent: true,
-    id: 3
+    id: 3,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '1920 East Maple Avenue El Segundo, CA 90245',
@@ -75,7 +78,8 @@ const agents = [
     notes: '',
     name: 'NY5',
     isAgent: true,
-    id: 5
+    id: 5,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '2020 Fifth Avenue Seattle, WA 98121',
@@ -88,7 +92,8 @@ const agents = [
     notes: '',
     name: 'SE3',
     isAgent: true,
-    id: 6
+    id: 6,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '9 Great Oaks Boulevard San Jose, CA 95119',
@@ -101,7 +106,8 @@ const agents = [
     notes: '',
     name: 'SV5',
     isAgent: true,
-    id: 7
+    id: 7,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: 'Science Park 610 1098 XH Amsterdam Netherlands',
@@ -114,7 +120,8 @@ const agents = [
     notes: '',
     name: 'AM3',
     isAgent: true,
-    id: 8
+    id: 8,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: 'Lärchenstrasse 110 Frankfurt 65933 Germany',
@@ -127,7 +134,8 @@ const agents = [
     notes: '',
     name: 'FR4',
     isAgent: true,
-    id: 9
+    id: 9,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address:
@@ -141,7 +149,8 @@ const agents = [
     notes: '',
     name: 'LD5',
     isAgent: true,
-    id: 10
+    id: 10,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address:
@@ -155,7 +164,8 @@ const agents = [
     notes: '',
     name: 'HK2',
     isAgent: true,
-    id: 11
+    id: 11,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address:
@@ -169,7 +179,8 @@ const agents = [
     notes: '',
     name: 'OS1',
     isAgent: true,
-    id: 12
+    id: 12,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '15 Pioneer Walk, Singapore 627753',
@@ -182,7 +193,8 @@ const agents = [
     notes: '',
     name: 'SG2',
     isAgent: true,
-    id: 13
+    id: 13,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address: '200 Bourke Road, Alexandria, Sydney NSW 2015 Australia',
@@ -195,7 +207,8 @@ const agents = [
     notes: '',
     name: 'SY4',
     isAgent: true,
-    id: 14
+    id: 14,
+    ignoreApi: true //remove this when you add to thousand eyes.
   },
   {
     address:
@@ -209,7 +222,8 @@ const agents = [
     notes: '',
     name: 'TY4',
     isAgent: true,
-    id: 15
+    id: 15,
+    ignoreApi: true //remove this when you add to thousand eyes.
   }
 ];
 

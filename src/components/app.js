@@ -30,11 +30,6 @@ function stateToComponent(state) {
   };
 }
 
-var mockFullAgentCall = {
-  46499: agent46499,
-  47477: agent47477
-};
-
 @connect(stateToComponent)
 class App extends Component {
   state = {
@@ -86,39 +81,41 @@ class App extends Component {
   };
 
   agentToAgentWithTests = agent => {
-    const agentId = agent.id;
-    var mockAgent = {
-      agents: [
-        {
-          tests: []
-        }
-      ]
-    };
+    return new Promise((resolveAgent, rejectAgent) => {
+      const agentId = agent.id;
+      var mockAgent = {
+        agents: [
+          {
+            tests: []
+          }
+        ]
+      };
 
-    var fullAgent = mockFullAgentCall[agentId] || mockAgent;
-
-    if (mockFullAgentCall[agentId]) {
-      getAgent(agentId).then(data => {
-        console.log(data);
-      });
-    }
-
-    var _tests = fullAgent.agents[0].tests;
-
-    var mappedTests = _.map(_tests, t => {
-      return _.find(this.testsWithLocation, twl => {
-        return twl.id === t.testId;
-      });
-    });
-
-    let newAgent = {
-      ...agent,
-      ...{
-        tests: mappedTests
+      function makeNewAgent(data) {
+        var fullAgent = data;
+        var _tests = fullAgent.agents[0].tests;
+        var mappedTests = _.map(_tests, t => {
+          return _.find(this.testsWithLocation, twl => {
+            return twl.id === t.testId;
+          });
+        });
+        let newAgent = {
+          ...agent,
+          ...{
+            tests: mappedTests
+          }
+        };
+        return newAgent;
       }
-    };
 
-    return newAgent;
+      if (agent.ignoreApi) {
+        resolveAgent(makeNewAgent.call(this, mockAgent));
+      } else {
+        getAgent(agentId).then(data => {
+          resolveAgent(makeNewAgent.call(this, data));
+        });
+      }
+    });
   };
 
   //just need this one time.
@@ -131,9 +128,12 @@ class App extends Component {
     // https://api.thousandeyes.com/v6/tests.json --header \
     // "Authorization: Bearer 047ec908-2ada-4e97-a5a5-74fdd5a993ff"
     this.testsWithLocation = this.mapTestsToLocations();
-    const decoratedAgents = _.map(agents, this.agentToAgentWithTests);
-    this.setState({
-      agents: decoratedAgents
+    const decoratedAgentPromises = _.map(agents, this.agentToAgentWithTests);
+
+    Promise.all(decoratedAgentPromises).then(decoratedAgents => {
+      this.setState({
+        agents: decoratedAgents
+      });
     });
   }
 
@@ -171,6 +171,8 @@ class App extends Component {
   render() {
     const { active, activeTest, activeInfoPanelIndex } = this.props.map;
 
+    const isLoading = this.state.agents.length === 0;
+
     const filteredLocations = this.state.agents;
 
     const height = 800;
@@ -191,6 +193,7 @@ class App extends Component {
           }}
         >
           <WorldMap
+            loading={isLoading}
             width={width}
             panelWidth={panelWidth}
             height={height}
@@ -205,6 +208,7 @@ class App extends Component {
         </div>
         <div className="data-readout-frame">
           <DataReadout
+            loading={isLoading}
             locations={filteredLocations}
             active={active}
             setActive={this.setActive}
