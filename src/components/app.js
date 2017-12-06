@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Transition } from 'semantic-ui-react';
 import { feature } from 'topojson-client';
 
-import { getAgent, getConfig, getTest, getTests } from '../api';
+import { getAgent, getConfig, getTestMetrics, getTests } from '../api';
 import agents from '../api/agents';
 import datacenterLocations from '../api/datacenter-locations';
 import {
@@ -145,10 +145,40 @@ class App extends Component {
     });
   }
 
+  testToLatencyPromise = test => {
+    return getTestMetrics(test.id, 2).then(test => {
+      return new Promise((res, rej) => {
+        const metrics = test.net.metrics;
+        const sum = _.reduce(
+          metrics,
+          (acc, val) => {
+            return acc + val.avgLatency;
+          },
+          0
+        );
+        res({
+          id: test.net.test.testId,
+          averageLatency: sum / metrics.length
+        });
+      });
+    });
+  };
+
   setActive = point => {
     const { dispatch } = this.props;
     dispatch(updateActiveTest({}));
     dispatch(updateActive(point));
+    const tests = point.tests;
+    const latencyPromises = _.map(tests, this.testToLatencyPromise);
+    Promise.all(latencyPromises).then(data => {
+      const newPoint = {
+        ...point,
+        tests: _.map(point.tests, t => {
+          return { ...t, ..._.find(data, { id: t.id }) };
+        })
+      };
+      dispatch(updateActive(newPoint));
+    });
   };
 
   clearActive = point => {

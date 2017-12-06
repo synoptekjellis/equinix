@@ -10,9 +10,9 @@ const routes = {
   tests: () => {
     return `${api}/tests/`;
   },
-  test: (id, hours) => {
+  testMetrics: (id, hours) => {
     hours = hours || 2;
-    return `${api}/tests/${id}?window=${hours}h`;
+    return `${api}/net/metrics/${id}?window=${hours}h`;
   },
   config: () => {
     return 'app-config.json';
@@ -55,8 +55,8 @@ const getAgent = id => {
   return getRoute(routes.agent(id))();
 };
 
-const getTest = (id, hours) => {
-  return getRoute(routes.test(id, hours))();
+const getTestMetrics = (id, hours) => {
+  return getRoute(routes.testMetrics(id, hours))();
 };
 
 const getTests = () => {
@@ -67,4 +67,4 @@ const getConfig = () => {
   return getRoute(routes.config())();
 };
 
-export { getAgent, getTest, getConfig, getTests };
+export { getAgent, getTestMetrics, getConfig, getTests };

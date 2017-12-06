@@ -8,6 +8,7 @@ import {
   Image,
   Label,
   List,
+  Loader,
   Transition
 } from 'semantic-ui-react';
 
@@ -18,7 +19,7 @@ export default class InfoPanel extends Component {
 
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
-    const color = 'green';
+    const color = 'teal';
     const size = 'big';
     const isActive = test.id === activeTest.id;
     const thisGroup = _.find(groups, g => {
@@ -28,6 +29,14 @@ export default class InfoPanel extends Component {
     const location = test.address || `${test.city_state}, ${test.country}`;
 
     const ref = isActive ? 'active-infopanel-listitem' : '';
+
+    const avg = test.averageLatency;
+
+    const latency = avg ? (
+      <Label circular color={color} size={size}>{`${avg.toFixed(2)}`}</Label>
+    ) : (
+      <Loader active inline />
+    );
 
     return (
       <List.Item
@@ -44,7 +53,7 @@ export default class InfoPanel extends Component {
         ref={ref}
       >
         <List.Content floated="right" className="speed">
-          <Label circular color={color} size={size}>{`${62}`}</Label>
+          {latency}
         </List.Content>
         <List.Content floated="left" className="icon">
           <Image src={thisGroup.icon} size="mini" />
