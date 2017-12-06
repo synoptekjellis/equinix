@@ -10,7 +10,14 @@
 .infopanel {
   display: flex;
   flex-grow: 1;
+  flex-direction: column;
+}
+
+.infopanel .infopanel-groups {
   overflow-y: auto;
+}
+
+.infopanel .infopanel-group {
 }
 
 .infopanel .ui .item.test-listitem {
@@ -79,4 +86,12 @@
 
 .infopanel .ui.styled.accordion {
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.infopanel-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 6px 6px 6px;
+  background-color: #fff;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
 }

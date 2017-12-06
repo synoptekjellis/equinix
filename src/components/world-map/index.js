@@ -385,6 +385,7 @@ class WorldMap extends Component {
         className={`ui bottom left popup`}
         style={{
           position: 'absolute',
+          width: hovering.isAgent ? '60px' : '120px',
           top: `${hoverAt.pageY + 12}px`,
           left: `${hoverAt.pageX - 18}px`
         }}

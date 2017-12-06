@@ -2,7 +2,14 @@ import './index.css';
 
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Accordion, Image, Label, List, Transition } from 'semantic-ui-react';
+import {
+  Accordion,
+  Header,
+  Image,
+  Label,
+  List,
+  Transition
+} from 'semantic-ui-react';
 
 import groups from './groups';
 
@@ -84,7 +91,10 @@ export default class InfoPanel extends Component {
     const isActive = activeInfoPanelIndex === index;
 
     return (
-      <div key={`infopanel-accordionpanel-${group.id}`}>
+      <div
+        key={`infopanel-accordionpanel-${group.id}`}
+        className="infopanel-group"
+      >
         <Accordion.Title
           active={isActive}
           index={index}
@@ -125,7 +135,10 @@ export default class InfoPanel extends Component {
         className="infopanel"
         style={{ height: `${height}px`, width: `${width}px` }}
       >
-        {this.renderTestGroups(groups)}
+        <div className="infopanel-header">
+          <Header size="large">Tests</Header>
+        </div>
+        <div className="infopanel-groups">{this.renderTestGroups(groups)}</div>
       </div>
     );
 

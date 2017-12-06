@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {
   Dimmer,
+  Header,
   Icon,
   Input,
   Label,
@@ -125,6 +126,9 @@ class DataReadout extends Component {
     if (loading) {
       return (
         <div className="data-readout">
+          <div className="data-readout-header">
+            <Header size="large">SVC Locations</Header>
+          </div>
           <div className="data-table">
             <Segment className="loader-frame">
               <Table celled selectable sortable>
@@ -141,6 +145,9 @@ class DataReadout extends Component {
 
     return (
       <div className="data-readout">
+        <div className="data-readout-header">
+          <Header size="large">SVC Locations</Header>
+        </div>
         <div className="data-table">
           <Table celled selectable sortable>
             {this.renderHead()}
