@@ -2,16 +2,7 @@ import './index.css';
 
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {
-  Accordion,
-  Button,
-  Icon,
-  Image,
-  Label,
-  List,
-  Transition
-} from 'semantic-ui-react';
+import { Accordion, Image, Label, List, Transition } from 'semantic-ui-react';
 
 import groups from './groups';
 
@@ -29,6 +20,8 @@ export default class InfoPanel extends Component {
 
     const location = test.address || `${test.city_state}, ${test.country}`;
 
+    const ref = isActive ? 'active-infopanel-listitem' : '';
+
     return (
       <List.Item
         key={`infopanel-listitem-${test.id}`}
@@ -41,6 +34,7 @@ export default class InfoPanel extends Component {
           }
         }}
         active={isActive}
+        ref={ref}
       >
         <List.Content floated="right" className="speed">
           <Label circular color={color} size={size}>{`${62}`}</Label>
@@ -55,6 +49,8 @@ export default class InfoPanel extends Component {
       </List.Item>
     );
   };
+
+  scrollToElement = () => {};
 
   renderTestlist = tests => {
     const testsHtml = _.map(tests, this.activeTestToHtml);

@@ -2,7 +2,11 @@ import './index.css';
 
 import _ from 'lodash';
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Icon, Input, Label, Menu, Table } from 'semantic-ui-react';
+
+import columnModel from './column-model';
+import DataReadoutListItem from './listitem';
 
 class DataReadout extends Component {
   state = {
@@ -15,64 +19,6 @@ class DataReadout extends Component {
   };
 
   //Data
-  columnModel = () => {
-    return [
-      // {
-      //   id: 'id',
-      //   label: 'ID',
-      //   templ: 'id'
-      // },
-      {
-        id: 'name',
-        label: 'Name',
-        templ: 'name',
-        minWidth: 70
-      },
-      {
-        id: 'tests',
-        label: '# of Tests',
-        templ: (row, col) => {
-          return row.tests.length;
-        },
-        minWidth: 100
-      },
-      {
-        id: 'address',
-        label: 'Address',
-        templ: 'address'
-      },
-      {
-        id: 'country',
-        label: 'Country',
-        templ: 'country',
-        minWidth: 100
-      },
-      {
-        id: 'region',
-        label: 'Region',
-        templ: 'region',
-        minWidth: 100
-      },
-      {
-        id: 'latitude',
-        label: 'Latitude',
-        templ: 'latitude',
-        minWidth: 105
-      },
-      {
-        id: 'longitude',
-        label: 'Longitude',
-        templ: 'longitude',
-        minWidth: 105
-      }
-
-      // {
-      //   id: 'notes',
-      //   label: 'Notes',
-      //   templ: 'notes'
-      // }
-    ];
-  };
 
   //Head
   renderHead = () => {
@@ -109,7 +55,7 @@ class DataReadout extends Component {
     return (
       <Table.Header>
         <Table.Row>
-          {_.map(this.columnModel(), columnToHeaderCell.bind(this))}
+          {_.map(columnModel(), columnToHeaderCell.bind(this))}
         </Table.Row>
       </Table.Header>
     );
@@ -119,40 +65,9 @@ class DataReadout extends Component {
   renderBody = () => {
     return <Table.Body>{this.renderRows()}</Table.Body>;
   };
-  renderRows = () => {
-    const { locations } = this.props;
-    const { sortBy, sortAsc } = this.state;
 
-    let sortedLocations = _.sortBy(locations, sortBy.templ);
-
-    if (!sortAsc) {
-      sortedLocations = _.reverse(sortedLocations);
-    }
-
-    console.log(sortedLocations);
-
-    let mapped = _.map(sortedLocations, this.locationToHtml);
-    return mapped;
-  };
   locationToHtml = location => {
-    const { active, setActive, clearActive } = this.props;
-
-    function columnToCell(cm) {
-      let content = '';
-      if (_.isString(cm.templ)) {
-        content = location[cm.templ];
-      }
-
-      if (_.isFunction(cm.templ)) {
-        content = cm.templ(location, cm);
-      }
-
-      return (
-        <Table.Cell key={`table-row-${location.id}-cell-${cm.id}`}>
-          {content}
-        </Table.Cell>
-      );
-    }
+    const { active } = this.props;
 
     let isActive = false;
     if (active.id === location.id) {
@@ -160,24 +75,40 @@ class DataReadout extends Component {
     }
 
     return (
-      <Table.Row
-        active={isActive}
+      <DataReadoutListItem
+        ref={isActive ? 'active-data-readout-listitem' : ''}
+        {...this.props}
+        location={location}
         key={`table-row-${location.id}`}
-        onClick={event => {
-          if (isActive) {
-            clearActive();
-          } else {
-            setActive(location);
-          }
-        }}
-      >
-        {_.map(this.columnModel(), columnToCell)}
-      </Table.Row>
+      />
     );
   };
 
+  renderRows = () => {
+    const { locations } = this.props;
+    const { sortBy, sortAsc } = this.state;
+    let sortedLocations = _.sortBy(locations, sortBy.templ);
+    if (!sortAsc) {
+      sortedLocations = _.reverse(sortedLocations);
+    }
+    let mapped = _.map(sortedLocations, this.locationToHtml);
+    return mapped;
+  };
+
+  scrollToActiveRow = () => {
+    var activeRow = this.refs['active-data-readout-listitem'];
+    if (activeRow) {
+      var visible = ReactDOM.findDOMNode(activeRow).scrollIntoView();
+
+      console.log('refs', this.refs);
+      console.log(visible);
+    }
+  };
+
   //lifecycle
-  componentDidMount() {}
+  componentDidUpdate() {
+    this.scrollToActiveRow();
+  }
 
   render() {
     return (
