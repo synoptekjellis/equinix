@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Transition } from 'semantic-ui-react';
 import { feature } from 'topojson-client';
 
+import { getAgent, getConfig, getTest } from '../api';
 import agents from '../api/agents';
 import agent46499 from '../api/agents-46499';
 import agent47477 from '../api/agents-47477';
@@ -95,6 +96,13 @@ class App extends Component {
     };
 
     var fullAgent = mockFullAgentCall[agentId] || mockAgent;
+
+    if (mockFullAgentCall[agentId]) {
+      getAgent(agentId).then(data => {
+        console.log(data);
+      });
+    }
+
     var _tests = fullAgent.agents[0].tests;
 
     var mappedTests = _.map(_tests, t => {
