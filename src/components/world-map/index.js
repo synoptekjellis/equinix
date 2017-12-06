@@ -46,8 +46,6 @@ class WorldMap extends Component {
   }
 
   zoomed = () => {
-    //console.log(d3.event.transform);
-
     this.setState({
       zoomTransform: d3.event.transform
     });
@@ -56,9 +54,6 @@ class WorldMap extends Component {
 
   zoomEnd = () => {
     const { activeTest, active } = this.props;
-
-    //console.log(activeTest.id, active.id, 'map');
-
     this.setState({
       zooming: false,
       zoomedTo: activeTest.id || active.id || 'map'
@@ -151,19 +146,14 @@ class WorldMap extends Component {
         onClick={event => {
           if (isAgent) {
             if (isActive) {
-              console.log('clear-active', point);
               clearActive();
             } else {
-              console.log('set-active', point);
               setActive(point);
             }
           } else {
             if (isActiveTest) {
-              console.log('clear-active-test', point);
               clearActiveTest();
             } else {
-              console.log('set-active-test', point);
-
               setActiveTest(point);
             }
           }
@@ -299,7 +289,7 @@ class WorldMap extends Component {
         ? this.refs.activetest.getBoundingClientRect()
         : this.refs.testlines.getBoundingClientRect();
 
-      console.log(bboxLines);
+      //console.log(bboxLines);
 
       let bboxActive = this.refs.active
         ? this.refs.active.getBoundingClientRect()
@@ -309,7 +299,7 @@ class WorldMap extends Component {
       let bboxFrame = hasLines ? bboxLines : bboxActive;
       let boxFramePorportion = bboxMap.width / bboxLines.width;
 
-      console.log(boxFramePorportion, bboxMap.width, bboxLines.width);
+      //console.log(boxFramePorportion, bboxMap.width, bboxLines.width);
 
       let zoomTo = hasLines ? boxFramePorportion * 0.5 : 3;
 
