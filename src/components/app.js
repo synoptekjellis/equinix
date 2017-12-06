@@ -7,15 +7,13 @@ import { connect } from 'react-redux';
 import { Transition } from 'semantic-ui-react';
 import { feature } from 'topojson-client';
 
-import { getAgent, getConfig, getTest } from '../api';
+import { getAgent, getConfig, getTest, getTests } from '../api';
 import agents from '../api/agents';
-import agent46499 from '../api/agents-46499';
-import agent47477 from '../api/agents-47477';
 import datacenterLocations from '../api/datacenter-locations';
-import tests from '../api/tests';
 import {
   updateActive,
   updateActiveTest,
+  updateAgents,
   updateInfoPanelIndex
 } from '../state/actions/map';
 import ClientLogo from './client-logo';
@@ -23,6 +21,8 @@ import DataReadout from './data-readout';
 import InfoPanel from './infopanel';
 import groups from './infopanel/groups';
 import WorldMap from './world-map';
+
+const TEST_BLACKLIST = ['Oracle Cloud Locations'];
 
 function stateToComponent(state) {
   return {
@@ -32,12 +32,9 @@ function stateToComponent(state) {
 
 @connect(stateToComponent)
 class App extends Component {
-  state = {
-    agents: [],
-    tests: []
-  };
+  state = {};
 
-  mapTestsToLocations = () => {
+  mapTestsToLocations = tests => {
     function testToTestWithLocation(test) {
       //datacenterLocations
 
@@ -91,14 +88,22 @@ class App extends Component {
         ]
       };
 
+      function testByBlackListedItems(test) {
+        return TEST_BLACKLIST.indexOf(test.type) === -1;
+      }
+
       function makeNewAgent(data) {
         var fullAgent = data;
         var _tests = fullAgent.agents[0].tests;
-        var mappedTests = _.map(_tests, t => {
-          return _.find(this.testsWithLocation, twl => {
-            return twl.id === t.testId;
-          });
-        });
+
+        var mappedTests = _.chain(_tests)
+          .map(t => {
+            return _.find(this.testsWithLocation, twl => {
+              return twl.id === t.testId;
+            });
+          })
+          .filter(testByBlackListedItems)
+          .value();
         let newAgent = {
           ...agent,
           ...{
@@ -123,16 +128,19 @@ class App extends Component {
   testsWithLocation = null;
 
   componentWillMount() {
+    const { dispatch } = this.props;
+
     // go get all tests.
     // then perform this mapping...
     // https://api.thousandeyes.com/v6/tests.json --header \
     // "Authorization: Bearer 047ec908-2ada-4e97-a5a5-74fdd5a993ff"
-    this.testsWithLocation = this.mapTestsToLocations();
-    const decoratedAgentPromises = _.map(agents, this.agentToAgentWithTests);
 
-    Promise.all(decoratedAgentPromises).then(decoratedAgents => {
-      this.setState({
-        agents: decoratedAgents
+    getTests().then(tests => {
+      this.testsWithLocation = this.mapTestsToLocations(tests);
+      const decoratedAgentPromises = _.map(agents, this.agentToAgentWithTests);
+
+      Promise.all(decoratedAgentPromises).then(decoratedAgents => {
+        dispatch(updateAgents(decoratedAgents));
       });
     });
   }
@@ -169,11 +177,11 @@ class App extends Component {
   };
 
   render() {
-    const { active, activeTest, activeInfoPanelIndex } = this.props.map;
+    const { active, activeTest, activeInfoPanelIndex, agents } = this.props.map;
 
-    const isLoading = this.state.agents.length === 0;
+    const isLoading = agents.length === 0;
 
-    const filteredLocations = this.state.agents;
+    const filteredLocations = agents;
 
     const height = 800;
     const width = 1440;

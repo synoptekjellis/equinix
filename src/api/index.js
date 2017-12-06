@@ -1,10 +1,14 @@
-const CORS_PROXY = ``;
+const CORS_PROXY = `https://cors-anywhere.herokuapp.com/`;
 const BASE_URL = `${CORS_PROXY}https://api.thousandeyes.com`;
 const api = `${BASE_URL}/v6`;
 const apiToken = '29bc9c84-0bac-4e39-80f3-79d896073113';
+
 const routes = {
   agent: id => {
     return `${api}/agents/${id}`;
+  },
+  tests: () => {
+    return `${api}/tests/`;
   },
   test: (id, hours) => {
     hours = hours || 2;
@@ -55,8 +59,12 @@ const getTest = (id, hours) => {
   return getRoute(routes.test(id, hours))();
 };
 
+const getTests = () => {
+  return getRoute(routes.tests())();
+};
+
 const getConfig = () => {
   return getRoute(routes.config())();
 };
 
-export { getAgent, getTest, getConfig };
+export { getAgent, getTest, getConfig, getTests };

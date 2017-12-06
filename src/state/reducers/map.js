@@ -1,7 +1,8 @@
 const initial = {
   active: {},
   activeTest: {},
-  activeInfoPanelIndex: -1
+  activeInfoPanelIndex: -1,
+  agents: []
 };
 
 const reducers = {
@@ -21,6 +22,12 @@ const reducers = {
     return {
       ...state,
       ...{ activeInfoPanelIndex: value }
+    };
+  },
+  UPDATE_AGENTS: (state, value) => {
+    return {
+      ...state,
+      ...{ agents: value }
     };
   }
 };

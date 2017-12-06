@@ -94,7 +94,7 @@ class WorldMap extends Component {
     } = point;
 
     if (TEST_BLACKLIST.indexOf(type) > -1) {
-      console.log(type);
+      //console.log(type);
       return;
     }
 

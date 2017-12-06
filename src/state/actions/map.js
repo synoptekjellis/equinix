@@ -18,3 +18,10 @@ export function updateInfoPanelIndex(value) {
     value: value
   };
 }
+
+export function updateAgents(value) {
+  return {
+    type: 'UPDATE_AGENTS',
+    value: value
+  };
+}
