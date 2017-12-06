@@ -1,4 +1,5 @@
-const BASE_URL = 'https://api.thousandeyes.com';
+const BASE_URL =
+  'https://cors-anywhere.herokuapp.com/https://api.thousandeyes.com';
 const api = `${BASE_URL}/v6`;
 const apiToken = '29bc9c84-0bac-4e39-80f3-79d896073113';
 const routes = {
@@ -34,10 +35,10 @@ function getRoute(route, validation) {
 
     let _route = route;
     return fetch(_route, {
-      credentials: 'include',
       headers: {
         Authorization: `Bearer ${apiToken}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
       }
     })
       .then(processStatus)
