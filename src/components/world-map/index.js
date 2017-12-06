@@ -18,6 +18,8 @@ const LINE_STROKE_WIDTH_ACTIVE = 1.75;
 const AGENT_MARKER_RADIUS = 3.5;
 const TEST_MARKER_RADIUS = 2;
 
+const TEST_BLACKLIST = ['Oracle Cloud Locations'];
+
 class WorldMap extends Component {
   constructor(props) {
     super();
@@ -90,6 +92,11 @@ class WorldMap extends Component {
       id,
       isAgent
     } = point;
+
+    if (TEST_BLACKLIST.indexOf(type) > -1) {
+      console.log(type);
+      return;
+    }
 
     const latlong = [longitude, latitude];
     const x = this.projection()(latlong)[0];

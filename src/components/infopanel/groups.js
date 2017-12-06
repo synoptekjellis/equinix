@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
   AWS_ICON,
   AWS_LOGO,
@@ -10,6 +12,8 @@ import {
   ORACLE_ICON,
   ORACLE_LOGO
 } from '../assets';
+
+const TEST_BLACKLIST = ['Oracle Cloud Locations'];
 
 const groups = [
   {
@@ -44,4 +48,10 @@ const groups = [
   }
 ];
 
-export default groups;
+function whitelistGroups() {
+  return _.filter(groups, g => {
+    return TEST_BLACKLIST.indexOf(g.name) === -1;
+  });
+}
+
+export default whitelistGroups();
