@@ -8,15 +8,25 @@ import { feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
 
-const COUNTRY_STROKE_WIDTH = 0.25;
-const ZOOM_TRANSITION_SPEED = 750;
-const MAX_ZOOM_LEVEL = 25;
-const LINE_STROKE_WIDTH = 0.25;
-const LINE_STROKE_WIDTH_ACTIVE = 1.75;
-const AGENT_MARKER_RADIUS = 3.5;
-const TEST_MARKER_RADIUS = 2;
+const {
+  countryStrokeWidth,
+  zoomTransitionSpeed,
+  maxZoomLevel,
+  lineStrokeWidth,
+  lineStrokeWidthActive,
+  agentMarkerRadius,
+  testMarkerRadius,
+  blacklist
+} = global.config;
 
-const TEST_BLACKLIST = ['Oracle Cloud Locations'];
+const COUNTRY_STROKE_WIDTH = countryStrokeWidth || 0.25;
+const ZOOM_TRANSITION_SPEED = zoomTransitionSpeed || 750;
+const MAX_ZOOM_LEVEL = maxZoomLevel || 25;
+const LINE_STROKE_WIDTH = lineStrokeWidth || 0.25;
+const LINE_STROKE_WIDTH_ACTIVE = lineStrokeWidthActive || 1.75;
+const AGENT_MARKER_RADIUS = agentMarkerRadius || 3.5;
+const TEST_MARKER_RADIUS = testMarkerRadius || 2;
+const TEST_BLACKLIST = blacklist || [];
 
 class WorldMap extends Component {
   constructor(props) {

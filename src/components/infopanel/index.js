@@ -14,13 +14,16 @@ import {
 
 import groups from './groups';
 
+const { latencyLabelColor, latencyDecimalPlaces } = global.config;
+
 export default class InfoPanel extends Component {
   state = {};
 
   activeTestToHtml = test => {
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
-    const color = 'red';
+    const color = latencyLabelColor || 'red';
     const size = 'big';
+    const decimalAmt = latencyDecimalPlaces || 2;
     const isActive = test.id === activeTest.id;
     const thisGroup = _.find(groups, g => {
       return g.name === test.type;
@@ -33,7 +36,9 @@ export default class InfoPanel extends Component {
     const avg = test.averageLatency;
 
     const latency = avg ? (
-      <Label circular color={color} size={size}>{`${avg.toFixed(2)}`}</Label>
+      <Label circular color={color} size={size}>{`${avg.toFixed(
+        decimalAmt
+      )}`}</Label>
     ) : (
       <Loader active inline />
     );
