@@ -67,7 +67,7 @@ class DataReadout extends Component {
   };
 
   locationToHtml = location => {
-    const { active } = this.props;
+    const { active, loadingAgents } = this.props;
 
     let isActive = false;
     if (active.id === location.id) {
@@ -78,6 +78,7 @@ class DataReadout extends Component {
       <DataReadoutListItem
         ref={isActive ? 'active-data-readout-listitem' : ''}
         {...this.props}
+        disable={loadingAgents}
         location={location}
         key={`table-row-${location.id}`}
       />
@@ -111,9 +112,9 @@ class DataReadout extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loadingAgents, loadingTests, active } = this.props;
 
-    if (loading) {
+    if (loadingAgents) {
       return (
         <div className="data-readout">
           <div className="data-readout-header">
@@ -133,13 +134,30 @@ class DataReadout extends Component {
       );
     }
 
+    const headerText = loadingTests
+      ? `Getting Latency Information for ${active.name} ...`
+      : `Equinix Datacenters`;
+
     return (
       <div className="data-readout">
         <div className="data-readout-header">
-          <Header size="large">Equinix Datacenters</Header>
+          <div>
+            <Header size="large" className="data-readout-header-text">
+              {headerText}{' '}
+              <Loader
+                active
+                inline
+                size="small"
+                className="data-readout-header-loader"
+                style={{
+                  visibility: loadingTests ? 'inherit' : 'hidden'
+                }}
+              />
+            </Header>
+          </div>
         </div>
         <div className="data-table">
-          <Table celled selectable sortable>
+          <Table celled selectable={!loadingTests} sortable>
             {this.renderHead()}
             {this.renderBody()}
           </Table>

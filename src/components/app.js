@@ -29,7 +29,9 @@ function stateToComponent(state) {
 
 @connect(stateToComponent)
 class App extends Component {
-  state = {};
+  state = {
+    loading: false
+  };
 
   mapTestsToLocations = tests => {
     function testToTestWithLocation(test) {
@@ -153,11 +155,18 @@ class App extends Component {
   };
 
   setActive = point => {
+    if (this.state.loading) {
+      return;
+    }
+
     const { dispatch } = this.props;
     dispatch(updateActiveTest({}));
     dispatch(updateActive(point));
     const tests = point.tests;
     const latencyPromises = _.map(tests, this.testToLatencyPromise);
+    this.setState({
+      loading: true
+    });
     Promise.all(latencyPromises).then(data => {
       const newPoint = {
         ...point,
@@ -166,16 +175,25 @@ class App extends Component {
         })
       };
       dispatch(updateActive(newPoint));
+      this.setState({
+        loading: false
+      });
     });
   };
 
   clearActive = point => {
+    if (this.state.loading) {
+      return;
+    }
     const { dispatch } = this.props;
     dispatch(updateActive({}));
     dispatch(updateActiveTest({}));
   };
 
   setActiveTest = test => {
+    if (this.state.loading) {
+      return;
+    }
     const { dispatch } = this.props;
     dispatch(updateActiveTest(test));
     var newIndex = _.findIndex(groups, group => {
@@ -185,6 +203,9 @@ class App extends Component {
   };
 
   clearActiveTest = test => {
+    if (this.state.loading) {
+      return;
+    }
     const { dispatch } = this.props;
     dispatch(updateActiveTest({}));
   };
@@ -227,7 +248,8 @@ class App extends Component {
         </div>
         <div className="data-readout-frame">
           <DataReadout
-            loading={isLoading}
+            loadingAgents={isLoading}
+            loadingTests={this.state.loading}
             locations={filteredLocations}
             active={active}
             setActive={this.setActive}
