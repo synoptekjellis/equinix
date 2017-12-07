@@ -1,11 +1,8 @@
 import './app.css';
 
-import { geoMercator, geoPath } from 'd3-geo';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Transition } from 'semantic-ui-react';
-import { feature } from 'topojson-client';
 
 import { getAgent, getConfig, getTestMetrics, getTests } from '../api';
 import agents from '../api/agents';
@@ -123,18 +120,9 @@ class App extends Component {
     });
   };
 
-  //just need this one time.
-  // will exit this spot when the .then happens
   testsWithLocation = null;
-
   componentWillMount() {
     const { dispatch } = this.props;
-
-    // go get all tests.
-    // then perform this mapping...
-    // https://api.thousandeyes.com/v6/tests.json --header \
-    // "Authorization: Bearer 047ec908-2ada-4e97-a5a5-74fdd5a993ff"
-
     getTests().then(tests => {
       this.testsWithLocation = this.mapTestsToLocations(tests);
       const decoratedAgentPromises = _.map(agents, this.agentToAgentWithTests);
@@ -208,18 +196,11 @@ class App extends Component {
 
   render() {
     const { active, activeTest, activeInfoPanelIndex, agents } = this.props.map;
-
     const isLoading = agents.length === 0;
-
     const filteredLocations = agents;
-
     const height = 800;
     const width = 1440;
     const panelWidth = width * 0.25;
-
-    const animation = 'fade right';
-    const duration = 750;
-
     const hasActiveAgent = !!active.id;
 
     return (

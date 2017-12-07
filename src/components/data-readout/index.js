@@ -3,17 +3,7 @@ import './index.css';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Dimmer,
-  Header,
-  Icon,
-  Input,
-  Label,
-  Loader,
-  Menu,
-  Segment,
-  Table
-} from 'semantic-ui-react';
+import { Dimmer, Header, Loader, Segment, Table } from 'semantic-ui-react';
 
 import columnModel from './column-model';
 import DataReadoutListItem from './listitem';

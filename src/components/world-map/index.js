@@ -1,12 +1,10 @@
 import './index.css';
 
 import * as d3 from 'd3';
-import { zoom } from 'd3/node_modules/d3-zoom';
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Transition } from 'semantic-ui-react';
-import { bbox, feature } from 'topojson-client';
+import { feature } from 'topojson-client';
 
 import worldJson from './world-110m.json';
 
@@ -78,16 +76,16 @@ class WorldMap extends Component {
       clearActive,
       clearActiveTest
     } = this.props;
-    const { hovering, hoverAt } = this.state;
+    const { hovering } = this.state;
 
     const {
       latitude,
       longitude,
       type,
-      city_state,
-      country,
-      region,
-      notes,
+      // city_state,
+      // country,
+      // region,
+      // notes,
       name,
       id,
       isAgent
@@ -373,13 +371,12 @@ class WorldMap extends Component {
   };
 
   componentDidUpdate() {
-    const { active } = this.props;
     this.doZoom();
   }
 
   render() {
     const { width, height } = this.props;
-    const { zoomTransform, zoomScale, hovering, hoverAt } = this.state;
+    const { zoomTransform, hovering, hoverAt } = this.state;
     let tip = hovering.id ? (
       <div
         className={`ui bottom left popup`}

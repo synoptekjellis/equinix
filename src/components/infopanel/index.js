@@ -134,7 +134,7 @@ export default class InfoPanel extends Component {
   };
 
   render() {
-    const { height, width, active, visible } = this.props;
+    const { height, width, visible } = this.props;
     const animation = 'fade right';
     const duration = 750;
 

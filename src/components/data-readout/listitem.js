@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Icon, Input, Label, Menu, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 
 import columnModel from './column-model';
 
@@ -25,12 +25,7 @@ export default class DataReadoutListItem extends Component {
       );
     }
 
-    let isActive = false;
-    if (active.id === location.id) {
-      isActive = true;
-    }
-
-    const ref = isActive ? 'active-row' : '';
+    let isActive = active.id === location.id;
 
     return (
       <Table.Row
