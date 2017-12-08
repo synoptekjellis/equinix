@@ -1,11 +1,15 @@
 function config() {
   window.config = {
+    /* API */
+
     //Timeframe in hours for ametrics call
     hours: 2,
     //your bearer token for thousand Eyes
     token: '29bc9c84-0bac-4e39-80f3-79d896073113',
     //Items if this type shall be ignored. Leave as empty array if nothing to blacklist.
     blacklist: ['Oracle Cloud Locations'],
+
+    corsProxy: 'https://cors-anywhere.herokuapp.com/',
 
     /* MAP COSMETICS */
 
