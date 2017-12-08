@@ -19,7 +19,7 @@ import InfoPanel from './infopanel';
 import groups from './infopanel/groups';
 import WorldMap from './world-map';
 
-const TEST_BLACKLIST = ['Oracle Cloud Locations'];
+const TEST_BLACKLIST = global.config.blacklist || [];
 
 function stateToComponent(state) {
   return {

@@ -13,7 +13,7 @@ import {
   ORACLE_LOGO
 } from '../assets';
 
-const TEST_BLACKLIST = ['Oracle Cloud Locations'];
+const TEST_BLACKLIST = global.config.blacklist || [];
 
 const groups = [
   {
