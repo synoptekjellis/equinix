@@ -5,8 +5,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getAgent, getConfig, getTestMetrics, getTests } from '../api';
-import agents from '../api/agents';
-import datacenterLocations from '../api/datacenter-locations';
 import {
   updateActive,
   updateActiveTest,
@@ -19,6 +17,8 @@ import InfoPanel from './infopanel';
 import groups from './infopanel/groups';
 import WorldMap from './world-map';
 
+const agents = global.agents || [];
+const datacenterLocations = global.datacenterLocations || [];
 const TEST_BLACKLIST = global.config.blacklist || [];
 
 function stateToComponent(state) {
