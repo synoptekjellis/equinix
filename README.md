@@ -2,11 +2,15 @@
 
 Data visualization tool for Equinix sales team
 
-#Configuration
+![image](https://user-images.githubusercontent.com/954596/33912721-a7f5768a-df5c-11e7-82ee-1b053f24958e.png)
+
+# Configuration
 
 In the build folder you will see 3 files, `config.js`, `agents.js` and `datacenter-locations.js`
 
-##config.js:
+![files](https://user-images.githubusercontent.com/954596/33912742-b59a46d0-df5c-11e7-8f62-062caae9f7a2.JPG)
+
+## config.js:
 
 This controls qualities about the application itself. of special importance are the token and the cors proxy
 
@@ -64,7 +68,7 @@ function config() {
 config();
 ```
 
-##agents.js:
+## agents.js:
 
 This contains a list of every known agent. These will appear as large dots on the map.
 
@@ -134,9 +138,9 @@ Here is what the entry for AT1 looked like: It will have an agent type of Enterp
     },
 ```
 
-##data-centerlocations.js
+## datacenter-locations.js
 
-You need to also map the id in the data-centerlocations.js
+You need to also map the id in the datacenter-locations.js
 
 This is exactly like agents but contains every single point on the map. This is the things agents link to, the can link to tests, or also to other agents. If you add tests in the api, there must be a corresponding test with a well-formed name here. The application attempts to map all known tests for an agent to a 'real world' location from this file.
 
