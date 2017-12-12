@@ -10,8 +10,7 @@ const agents = [
     notes: '',
     name: 'AT1',
     isAgent: true,
-    id: 1,
-    ignoreApi: true //remove this when you add to thousand eyes.
+    id: 50468 //remove this when you add to thousand eyes.
   },
   {
     address: '1905 Lunt Avenue Elk Grove, IL 60007',
@@ -149,8 +148,7 @@ const agents = [
     notes: '',
     name: 'LD5',
     isAgent: true,
-    id: 10,
-    ignoreApi: true //remove this when you add to thousand eyes.
+    id: 50255 //remove this when you add to thousand eyes.
   },
   {
     address:
