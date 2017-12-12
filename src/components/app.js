@@ -88,12 +88,22 @@ class App extends Component {
       };
 
       function testByBlackListedItems(test) {
+        if (!test) {
+          return false;
+        }
+
         return TEST_BLACKLIST.indexOf(test.type) === -1;
       }
 
       function makeNewAgent(data) {
+        if (!this.testsWithLocation) {
+          return;
+        }
+
         var fullAgent = data;
         var _tests = fullAgent.agents[0].tests;
+
+        console.log('tests with location', this.testsWithLocation);
 
         var mappedTests = _.chain(_tests)
           .map(t => {
@@ -126,7 +136,9 @@ class App extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     getTests().then(tests => {
-      this.testsWithLocation = this.mapTestsToLocations(tests);
+      this.testsWithLocation = _.filter(this.mapTestsToLocations(tests), t => {
+        return t;
+      });
       const decoratedAgentPromises = _.map(agents, this.agentToAgentWithTests);
 
       Promise.all(decoratedAgentPromises).then(decoratedAgents => {

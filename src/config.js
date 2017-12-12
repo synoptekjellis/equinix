@@ -5,7 +5,7 @@ function config() {
     // Timeframe in hours for a metrics call
     hours: 2,
     // your bearer token for thousand Eyes
-    token: '29bc9c84-0bac-4e39-80f3-79d896073113',
+    token: '618e6852-7c8c-44a7-8f76-72903761961d',
     // Items if this type shall be ignored. Leave as empty array if nothing to blacklist.
     blacklist: ['Oracle Cloud Locations'],
 

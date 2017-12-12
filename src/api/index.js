@@ -1,7 +1,7 @@
 const CORS_PROXY = global.config.corsProxy || ``;
 const BASE_URL = `${CORS_PROXY}https://api.thousandeyes.com`;
 const api = `${BASE_URL}/v6`;
-const apiToken = '29bc9c84-0bac-4e39-80f3-79d896073113';
+const apiToken = global.config.token || 'NO_TOKEN';
 
 const routes = {
   agent: id => {
