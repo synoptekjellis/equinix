@@ -45,6 +45,7 @@ module.exports = {
   appIndexJs: resolveApp('src/index.js'),
   appConfigJs: resolveApp('src/config.js'),
   appAgentsJs: resolveApp('src/agents.js'),
+  README: resolveApp('src/README.md'),
   appDatacenterLocationsJs: resolveApp('src/datacenter-locations.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),

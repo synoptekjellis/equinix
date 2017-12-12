@@ -329,7 +329,8 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: paths.appConfigJs },
       { from: paths.appAgentsJs },
-      { from: paths.appDatacenterLocationsJs }
+      { from: paths.appDatacenterLocationsJs },
+      { from: paths.README }
     ])
   ],
   // Some libraries import Node modules but don't use them in the browser.
