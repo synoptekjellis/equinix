@@ -68,6 +68,8 @@ class WorldMap extends Component {
       zooming: false,
       zoomedTo: activeTest.id || active.id || 'map'
     });
+
+    this.zooming = false;
   };
 
   zoomStart = () => {
@@ -279,10 +281,15 @@ class WorldMap extends Component {
   }
 
   currentScale = 1;
+  zooming = false;
   doZoom = () => {
     const { active, activeTest } = this.props;
     const { zoomedTo } = this.state;
     const maxZoom = MAX_ZOOM_LEVEL;
+
+    if (this.zooming) {
+      return;
+    }
 
     if (this.state.zooming) {
       return;
@@ -297,14 +304,12 @@ class WorldMap extends Component {
       ? ZOOM_TRANSITION_SPEED * 0.6
       : ZOOM_TRANSITION_SPEED;
 
-    if (needToZoomToLines || needToZoomToLine) {
+    if (needToZoomToLine || needToZoomToLines) {
       let bboxMap = this.refs.svg.getBoundingClientRect();
 
       let bboxLines = activeTest.id
         ? this.refs.activetest.getBoundingClientRect()
         : this.refs.testlines.getBoundingClientRect();
-
-      //console.log(bboxLines);
 
       let bboxActive = this.refs.active
         ? this.refs.active.getBoundingClientRect()
@@ -314,7 +319,8 @@ class WorldMap extends Component {
       let bboxFrame = hasLines ? bboxLines : bboxActive;
       let boxFramePorportion = bboxMap.width / bboxLines.width;
 
-      //console.log(boxFramePorportion, bboxMap.width, bboxLines.width);
+      // console.log('has lines', hasLines);
+      // console.log('bboxFrame', bboxFrame);
 
       let zoomTo = hasLines ? boxFramePorportion * 0.5 : 3;
 
@@ -368,6 +374,7 @@ class WorldMap extends Component {
           this.zoom.transform,
           d3.zoomIdentity.translate(deltaX, deltaY).scale(zoomTo)
         );
+      this.zooming = true;
     }
 
     if (needToZoomToMap) {
@@ -377,6 +384,7 @@ class WorldMap extends Component {
         .transition()
         .duration(speed)
         .call(this.zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
+      this.zooming = true;
     }
   };
 

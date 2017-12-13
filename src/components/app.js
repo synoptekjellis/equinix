@@ -103,7 +103,7 @@ class App extends Component {
         var fullAgent = data;
         var _tests = fullAgent.agents[0].tests;
 
-        console.log('tests with location', this.testsWithLocation);
+        //console.log('tests with location', this.testsWithLocation);
 
         var mappedTests = _.chain(_tests)
           .map(t => {
