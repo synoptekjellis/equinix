@@ -206,6 +206,7 @@ class WorldMap extends Component {
     const { active, activeTest } = this.props;
 
     return _.map(active.tests, test => {
+
       const latlong1 = [test.longitude, test.latitude];
       const x1 = this.projection()(latlong1)[0];
       const y1 = this.projection()(latlong1)[1];
@@ -395,6 +396,9 @@ class WorldMap extends Component {
   render() {
     const { width, height } = this.props;
     const { zoomTransform, hovering, hoverAt } = this.state;
+
+    //console.log(hovering)
+
     let tip = hovering.id ? (
       <div
         className={`ui bottom left popup`}
@@ -406,8 +410,8 @@ class WorldMap extends Component {
         }}
       >
         {hovering.isAgent
-          ? `${hovering.name}`
-          : `${hovering.fullName || hovering.name} `}
+          ? `${hovering.fullName || hovering.name}`
+          : `${hovering.fullName || hovering.name}`}
       </div>
     ) : (
       <div

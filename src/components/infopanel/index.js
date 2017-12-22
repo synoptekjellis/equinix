@@ -20,7 +20,7 @@ export default class InfoPanel extends Component {
   state = {};
 
   activeTestToHtml = test => {
-    console.log(test);
+    //console.log(test);
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
     const color = latencyLabelColor || 'red';
     const size = 'big';

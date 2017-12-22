@@ -42,6 +42,11 @@ class App extends Component {
       }
 
       function locationsToLocationsWithTestData(datacenterLocation) {
+        
+        if(test.testName === 'CH3-AT1 via Equinix Connect'){
+          console.log(test, datacenterLocation)
+        }
+
         return {
           ...datacenterLocation,
           ...{
@@ -53,6 +58,14 @@ class App extends Component {
       }
 
       function locationsToLocation(acc, dsLocation) {
+
+        if(dsLocation.name && acc.name && acc.testType === 'agent-to-agent'){
+          if(acc.fullName.indexOf(acc.name) !== 0){
+            return acc;
+          }
+        }
+
+
         if (
           acc.name &&
           dsLocation.name &&
