@@ -151,9 +151,14 @@ class App extends Component {
     return getTestMetrics(test.id, 2).then(test => {
       return new Promise((res, rej) => {
         const metrics = test.net.metrics;
+
+        console.log(test.net);
         const sum = _.reduce(
           metrics,
           (acc, val) => {
+
+            //console.log(val)
+
             return acc + val.avgLatency;
           },
           0
@@ -174,6 +179,7 @@ class App extends Component {
     const { dispatch } = this.props;
     dispatch(updateActiveTest({}));
     dispatch(updateActive(point));
+    console.log(point);
     const tests = point.tests;
     const latencyPromises = _.map(tests, this.testToLatencyPromise);
     this.setState({

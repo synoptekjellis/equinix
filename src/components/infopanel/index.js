@@ -20,6 +20,7 @@ export default class InfoPanel extends Component {
   state = {};
 
   activeTestToHtml = test => {
+    console.log(test);
     const { activeTest, setActiveTest, clearActiveTest } = this.props;
     const color = latencyLabelColor || 'red';
     const size = 'big';
@@ -28,7 +29,7 @@ export default class InfoPanel extends Component {
     const thisGroup = _.find(groups, g => {
       return g.name === test.type;
     });
-
+    const name = test.fullName || test.name;
     const location = test.address || `${test.city_state}, ${test.country}`;
 
     const ref = isActive ? 'active-infopanel-listitem' : '';
@@ -36,7 +37,8 @@ export default class InfoPanel extends Component {
     const avg = test.averageLatency;
 
     const latency = avg ? (
-      <Label circular color={color} size={size}>{`${avg.toFixed(
+      <Label circular color={color} size={size}>{`
+      ${avg.toFixed(
         decimalAmt
       )}`}</Label>
     ) : (
@@ -64,7 +66,7 @@ export default class InfoPanel extends Component {
           <Image src={thisGroup.icon} size="mini" />
         </List.Content>
         <List.Content>
-          <List.Header>{test.name}</List.Header>
+          <List.Header>{name}</List.Header>
           <List.Description>{location}</List.Description>
         </List.Content>
       </List.Item>
