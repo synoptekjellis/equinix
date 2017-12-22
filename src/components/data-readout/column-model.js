@@ -29,13 +29,13 @@ export default () => {
       label: 'Country',
       templ: 'country',
       minWidth: 100
-    },
-    {
-      id: 'region',
-      label: 'Region',
-      templ: 'region',
-      minWidth: 100
     }
+    // {
+    //   id: 'region',
+    //   label: 'Region',
+    //   templ: 'region',
+    //   minWidth: 100
+    // }
     // {
     //   id: 'latitude',
     //   label: 'Latitude',

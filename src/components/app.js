@@ -42,10 +42,6 @@ class App extends Component {
       }
 
       function locationsToLocationsWithTestData(datacenterLocation) {
-        
-        if(test.testName === 'CH3-AT1 via Equinix Connect'){
-          console.log(test, datacenterLocation)
-        }
 
         return {
           ...datacenterLocation,
@@ -161,16 +157,31 @@ class App extends Component {
   }
 
   testToLatencyPromise = test => {
+   
     return getTestMetrics(test.id, 2).then(test => {
       return new Promise((res, rej) => {
         const metrics = test.net.metrics;
+        const active = this.props.map.active;
+        
+ 
 
-        console.log(test.net);
+        const filteredMetrics = _.filter(metrics, (metric) => { 
+          return active.id === metric.agentId
+        });
+
+        // console.log('--')
+        // console.log(test.net);
+        // console.log(active);
+        // console.log(
+        //   metrics.length, 
+        //   filteredMetrics.length, 
+        //   metrics.length - filteredMetrics.length
+        // );
+        // console.log('--')
+
         const sum = _.reduce(
-          metrics,
+          filteredMetrics,
           (acc, val) => {
-
-            //console.log(val)
 
             return acc + val.avgLatency;
           },
@@ -178,7 +189,7 @@ class App extends Component {
         );
         res({
           id: test.net.test.testId,
-          averageLatency: sum / metrics.length
+          averageLatency: sum / filteredMetrics.length
         });
       });
     });
@@ -192,7 +203,7 @@ class App extends Component {
     const { dispatch } = this.props;
     dispatch(updateActiveTest({}));
     dispatch(updateActive(point));
-    console.log(point);
+ 
     const tests = point.tests;
     const latencyPromises = _.map(tests, this.testToLatencyPromise);
     this.setState({
