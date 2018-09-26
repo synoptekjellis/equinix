@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config",
+    "\\config\\jest",
+    "\\public",
+    "\\scripts",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\data-readout",
+    "\\src\\components\\infopanel"
+  ],
+  "PreviewInSolutionExplorer": false
+}
